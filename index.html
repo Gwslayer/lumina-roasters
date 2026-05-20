@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lumina Roasters | Slow Coffee, Intentional Moments</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-color: #F9F8F6;
+      --text-main: #2C2621;
+      --text-muted: #7A726A;
+      --accent: #B88A64;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      cursor: none;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 400;
+    }
+
+
+    .cursor-dot {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 6px;
+      height: 6px;
+      background-color: var(--text-main);
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+    }
+
+    .cursor-ring {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(44, 38, 33, 0.4);
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      z-index: 9998;
+      transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .cursor-ring.active {
+      width: 50px;
+      height: 50px;
+      background-color: rgba(44, 38, 33, 0.05);
+      border-color: transparent;
+    }
+
+    @media (pointer: coarse) {
+      * {
+        cursor: auto !important;
+      }
+
+      .cursor-dot,
+      .cursor-ring {
+        display: none !important;
+      }
+    }
+
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 40px 6%;
+      background: transparent;
+      border-bottom: 1px solid rgba(44, 38, 33, 0.08);
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0;
+    }
+
+    .nav-links a {
+      color: var(--text-main);
+      text-decoration: none;
+      margin-left: 40px;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      position: relative;
+      padding-bottom: 4px;
+    }
+
+    .nav-links a::after {
+      content: '';
+      display: block;
+      height: 1px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    .nav-links a:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    .hero {
+      padding: 0 6% 40px 6%;
+      height: 85vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero-image-container {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+      border-radius: 4px;
+    }
+
+    .hero-image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      animation: gentleZoom 15s infinite alternate ease-in-out;
+    }
+
+    @keyframes gentleZoom {
+      0% {
+        transform: scale(1);
+      }
+
+      100% {
+        transform: scale(1.08);
+      }
+    }
+
+    .hero-text {
+      position: absolute;
+      bottom: 10%;
+      left: 8%;
+      color: white;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 7vw, 6rem);
+      line-height: 1.1;
+      margin-bottom: 15px;
+      font-style: italic;
+    }
+
+    .story-section {
+      padding: 120px 6%;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .story-section h2 {
+      font-size: 2.5rem;
+      max-width: 700px;
+      line-height: 1.4;
+      color: var(--text-main);
+    }
+
+    .gallery {
+      padding: 0 6% 120px 6%;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 2px;
+    }
+
+    .gallery-item:nth-child(1) {
+      height: 60vh;
+      margin-top: -80px;
+    }
+
+    .gallery-item:nth-child(2) {
+      height: 80vh;
+    }
+
+    .gallery-item:nth-child(3) {
+      height: 50vh;
+      margin-top: 80px;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 1.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .roaster-section {
+      padding: 100px 6%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .roaster-bio {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--text-main);
+    }
+
+    .roaster-bio h3 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    .roaster-bio p {
+      margin-bottom: 20px;
+      color: var(--text-muted);
+    }
+
+    .roaster-image {
+      position: relative;
+      overflow: hidden;
+      border-radius: 2px;
+      height: 500px;
+    }
+
+    .roaster-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .process-section {
+      padding: 120px 6%;
+      background: rgba(184, 138, 100, 0.02);
+      border-top: 1px solid rgba(44, 38, 33, 0.08);
+      border-bottom: 1px solid rgba(44, 38, 33, 0.08);
+    }
+
+    .process-section h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 80px;
+    }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 60px;
+    }
+
+    .step {
+      text-align: center;
+    }
+
+    .step-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      color: var(--accent);
+      margin-bottom: 15px;
+      opacity: 0.6;
+    }
+
+    .step h3 {
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+    }
+
+    .step p {
+      color: var(--text-muted);
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    .testimonials {
+      padding: 120px 6%;
+      background: rgba(184, 138, 100, 0.03);
+    }
+
+    .testimonials h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 80px;
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 40px;
+    }
+
+    .testimonial-card {
+      padding: 40px;
+      background: white;
+      border-radius: 2px;
+      border-left: 3px solid var(--accent);
+    }
+
+    .testimonial-card p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--text-main);
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      font-weight: 400;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 1s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .cta-section {
+      padding: 120px 6%;
+      text-align: center;
+      border-top: 1px solid rgba(44, 38, 33, 0.08);
+    }
+
+    .cta-section h2 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+      color: var(--text-main);
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 16px 40px;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: var(--accent);
+      z-index: -1;
+      transition: left 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    .cta-button:hover {
+      color: var(--bg-color);
+    }
+
+    .cta-button:hover::before {
+      left: 0;
+    }
+
+    .footer-text {
+      margin-top: 60px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+
+      .roaster-section,
+      .process-steps,
+      .testimonial-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-item:nth-child(1),
+      .gallery-item:nth-child(3) {
+        margin-top: 0;
+        height: 50vh;
+      }
+
+      .roaster-image {
+        height: 350px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
+
+  <nav>
+    <div class="logo interactive">Lumina.</div>
+    <div class="nav-links">
+      <a href="#process" class="interactive" aria-label="Learn about our process">Our Process</a>
+      <a href="#visit" class="interactive" aria-label="Visit our location">Visit Us</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-image-container interactive">
+      <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&w=1920&q=80"
+        alt="Pouring espresso with care and intention" loading="lazy">
+      <div class="hero-text reveal active">
+        <h1>Slow mornings.</h1>
+        <p style="font-size: 1.1rem; font-family: 'Inter', sans-serif;">Crafted with intention, poured with care.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="story-section">
+    <h2 class="reveal">We believe coffee is more than a routine. It is a moment of pause in a fast-moving world. Our
+      beans are ethically sourced, gently roasted, and prepared with an obsessive attention to detail.</h2>
+  </section>
+
+  <section class="gallery">
+    <div class="gallery-item interactive reveal">
+      <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=800&q=80"
+        alt="Warm cafe interior with natural light" loading="lazy">
+    </div>
+    <div class="gallery-item interactive reveal" style="transition-delay: 0.1s;">
+      <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=800&q=80"
+        alt="Latte art showing our craftsmanship" loading="lazy">
+    </div>
+    <div class="gallery-item interactive reveal" style="transition-delay: 0.2s;">
+      <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80"
+        alt="Freshly roasted coffee beans" loading="lazy">
+    </div>
+  </section>
+
+  <section class="roaster-section reveal">
+    <div class="roaster-bio">
+      <h3>Meet the roaster.</h3>
+      <p>I'm Maya, and Lumina started in a small garage in 2019. What began as a personal obsession with sourcing
+        single-origin beans has grown into a community of people who believe coffee should be intentional.</p>
+      <p>Every batch is roasted by hand. I spend hours dialing in the temperature, listening to the crack, watching the
+        color shift. There's no algorithm for this—just decades of craft passed down, and a relentless pursuit of
+        perfection.</p>
+      <p>When you visit, you're not just getting coffee. You're getting a moment with someone who genuinely cares about
+        your morning.</p>
+    </div>
+    <div class="roaster-image interactive">
+      <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=600&q=80"
+        alt="Maya, founder of Lumina Roasters, at the roasting machine" loading="lazy">
+    </div>
+  </section>
+
+  <section class="process-section" id="process">
+    <h2 class="reveal">How we do it.</h2>
+    <div class="process-steps">
+      <div class="step reveal" style="transition-delay: 0.1s;">
+        <div class="step-number">1</div>
+        <h3>Source</h3>
+        <p>We partner directly with farms in Ethiopia, Colombia, and Kenya. No middlemen. Just conversations with
+          growers who share our values.</p>
+      </div>
+      <div class="step reveal" style="transition-delay: 0.2s;">
+        <div class="step-number">2</div>
+        <h3>Roast</h3>
+        <p>Hand-roasted in small batches. We listen to the bean, adjust the heat, and pull at the exact moment it
+          reaches peak potential.</p>
+      </div>
+      <div class="step reveal" style="transition-delay: 0.3s;">
+        <div class="step-number">3</div>
+        <h3>Pour</h3>
+        <p>Whether espresso, pour-over, or cappuccino—each cup is made with intention. We take time. We don't rush.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials">
+    <h2 class="reveal">What people say.</h2>
+    <div class="testimonial-grid">
+      <div class="testimonial-card reveal" style="transition-delay: 0.1s;">
+        <p>"I've had coffee in 15 countries. This is the only place where I feel like someone actually cares about my
+          morning."</p>
+        <div class="testimonial-author">— Sarah M., Regular</div>
+      </div>
+      <div class="testimonial-card reveal" style="transition-delay: 0.2s;">
+        <p>"The espresso here changed how I think about coffee. It's not just caffeine. It's an experience."</p>
+        <div class="testimonial-author">— James K., First-time Visitor</div>
+      </div>
+      <div class="testimonial-card reveal" style="transition-delay: 0.3s;">
+        <p>"Maya remembers my order. She remembers my name. In a world of algorithms, that means everything."</p>
+        <div class="testimonial-author">— Alex R., Local</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section reveal" id="visit">
+    <h2>Ready to pause?</h2>
+    <a href="#" class="cta-button interactive" aria-label="Reserve your table now">Reserve Now</a>
+    <div class="footer-text">
+      <p>Open Monday–Friday, 7am–6pm<br>
+        Saturday–Sunday, 8am–5pm</p>
+      <p style="margin-top: 20px; font-size: 0.85rem; color: var(--text-muted);">Lumina Roasters © 2026 — Ethically
+        sourced, locally roasted</p>
+    </div>
+  </section>
+
+  <script>
+    const dot = document.getElementById('cursor-dot');
+    const ring = document.getElementById('cursor-ring');
+
+    let mouseX = 0, mouseY = 0;
+    let ringX = 0, ringY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      dot.style.left = mouseX + 'px';
+      dot.style.top = mouseY + 'px';
+    });
+
+    function animateRing() {
+      ringX += (mouseX - ringX) * 0.2;
+      ringY += (mouseY - ringY) * 0.2;
+
+      ring.style.left = ringX + 'px';
+      ring.style.top = ringY + 'px';
+
+      requestAnimationFrame(animateRing);
+    }
+    animateRing();
+
+    const interactives = document.querySelectorAll('.interactive, a');
+    interactives.forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        ring.classList.add('active');
+        dot.style.transform = 'translate(-50%, -50%) scale(0.5)';
+      });
+      el.addEventListener('mouseleave', () => {
+        ring.classList.remove('active');
+        dot.style.transform = 'translate(-50%, -50%) scale(1)';
+      });
+    });
+    const reveals = document.querySelectorAll('.reveal');
+    const revealOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
+
+    const revealOnScroll = new IntersectionObserver(function (entries, observer) {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('active');
+        observer.unobserve(entry.target);
+      });
+    }, revealOptions);
+
+    reveals.forEach(reveal => revealOnScroll.observe(reveal));
+  </script>
+</body>
+
+</html>
