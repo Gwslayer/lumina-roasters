@@ -385,44 +385,78 @@
         /* Keeps the text perfectly centered */
     }
 
+    /* ==========================================================================
+   UPGRADED: TESTIMONIALS SECTION
+   ========================================================================== */
+
     .testimonials {
-        padding: 120px 6%;
+        padding: 140px 6%;
         background: rgba(184, 138, 100, 0.03);
+        /* Subtle warm wash */
     }
 
     .testimonials h2 {
         text-align: center;
-        font-size: 2rem;
-        margin-bottom: 80px;
+        font-size: clamp(2.2rem, 5vw, 3.2rem);
+        margin-bottom: 90px;
+        font-style: italic;
+        font-weight: 400;
+        color: var(--text-main);
     }
 
     .testimonial-grid {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: repeat(3, 1fr);
         gap: 40px;
+        max-width: 1200px;
+        margin: 0 auto;
     }
 
     .testimonial-card {
-        padding: 40px;
-        background: white;
-        border-radius: 2px;
-        border-left: 3px solid var(--accent);
+        padding: 50px 40px;
+        background: #ffffff;
+        border-radius: 4px;
+        border-top: 3px solid var(--accent);
+        /* Moved accent to top for a more modern look */
+        box-shadow: 0 10px 30px rgba(44, 38, 33, 0.02);
+        transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s ease;
+    }
+
+    /* Elevate the card to focus the user's attention on the review */
+    .testimonial-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(44, 38, 33, 0.06);
     }
 
     .testimonial-card p {
-        font-size: 1rem;
+        font-size: 1.05rem;
         line-height: 1.8;
         color: var(--text-main);
-        margin-bottom: 20px;
+        margin-bottom: 30px;
         font-style: italic;
+        position: relative;
+    }
+
+    /* Adding a sophisticated, oversized quote mark using CSS pseudo-elements */
+    .testimonial-card p::before {
+        content: '"';
+        font-family: 'Playfair Display', serif;
+        font-size: 4rem;
+        color: var(--accent);
+        opacity: 0.2;
+        position: absolute;
+        top: -30px;
+        left: -15px;
+        line-height: 1;
     }
 
     .testimonial-author {
-        font-weight: 400;
-        color: var(--text-muted);
-        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--text-main);
+        font-size: 0.85rem;
         text-transform: uppercase;
-        letter-spacing: 1px;
+        letter-spacing: 1.5px;
+        font-family: 'Inter', sans-serif;
     }
 
     .reveal {
