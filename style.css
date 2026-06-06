@@ -5,6 +5,26 @@
         --accent: #B88A64;
     }
 
+    /* Smooth scrolling for anchor links */
+    html {
+        scroll-behavior: smooth;
+    }
+
+    /*sticky frosted-glass navigation */
+    nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        background: rgba(249, 248, 246, 0.85);
+        /* Slightly transparent background */
+        backdrop-filter: blur(12px);
+        /* Frosted glass effect */
+        -webkit-backdrop-filter: blur(12px);
+        /* Safari support */
+        transition: padding 0.4s ease;
+    }
+
     * {
         margin: 0;
         padding: 0;
