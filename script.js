@@ -47,15 +47,10 @@ const revealOnScroll = new IntersectionObserver(function (entries, observer) {
 reveals.forEach(reveal => revealOnScroll.observe(reveal));
 
 /* 
-   UPDATED DARK MODE TOGGLE (Flicker-Free)
+   UPDATED DARK MODE TOGGLE (Switch Optimized)
 */
 const themeToggle = document.getElementById('theme-toggle');
-const html = document.documentElement; // Targeting <html> instead of <body>
-
-// Set the correct icon on page load
-if (html.classList.contains('dark-mode') && themeToggle) {
-  themeToggle.textContent = '☀️';
-}
+const html = document.documentElement; 
 
 // Listen for clicks
 if (themeToggle) {
@@ -64,10 +59,8 @@ if (themeToggle) {
     
     if (html.classList.contains('dark-mode')) {
       localStorage.setItem('lumina-theme', 'dark');
-      themeToggle.textContent = '☀️';
     } else {
       localStorage.setItem('lumina-theme', 'light');
-      themeToggle.textContent = '🌙';
     }
   });
 }
