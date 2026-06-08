@@ -9,6 +9,12 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
+    
+    <script>
+    if (localStorage.getItem('lumina-theme') === 'dark') {
+      document.documentElement.classList.add('dark-mode');
+    }
+  </script>
 </head>
 
 <body>
@@ -24,6 +30,9 @@
             <a href="menu.html" class="interactive" aria-label="View our menu">Menu</a>
             <a href="index.html#process" class="interactive" aria-label="Learn about our process">Our Process</a>
             <a href="index.html#visit" class="interactive" aria-label="Visit our location">Visit Us</a>
+
+            <button id="theme-toggle" class="interactive" aria-label="Toggle Dark Mode"
+                style="background: none; border: none; font-size: 1.2rem; margin-left: 15px; cursor: none;">🌙</button>
         </div>
     </nav>
 
@@ -68,7 +77,8 @@
 
                 <div class="menu-item interactive">
                     <div class="menu-image">
-                        <img src="https://images.unsplash.com/photo-1485808191679-5f86510681a2?auto=format&fit=crop&w=600&q=80&fm=webp" alt="Cortado" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1485808191679-5f86510681a2?auto=format&fit=crop&w=600&q=80&fm=webp"
+                            alt="Cortado" loading="lazy">
                     </div>
                     <div class="menu-details">
                         <div class="menu-header">

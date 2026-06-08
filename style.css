@@ -5,6 +5,68 @@
         --accent: #B88A64;
     }
 
+ /*
+    PREMIUM DARK MODE THEME & SMOOTH TRANSITIONS
+    */
+
+/* Page Fade-In Animation for smooth routing */
+    body {
+        animation: pageFade 0.7s ease-in-out forwards;
+    }
+
+    @keyframes pageFade {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+
+    /* Base Dark Mode Variables */
+    html.dark-mode body {
+        --bg-color: #0b1120;
+        --text-main: #F3F1EC;
+        --text-muted: #A8A29E;
+        --accent: #D47324;
+    }
+
+    /* Update Nav and Footer borders */
+    html.dark-mode nav {
+        background: rgba(11, 17, 32, 0.92);
+        border-bottom: 1px solid rgba(243, 241, 236, 0.08);
+    }
+
+    html.dark-mode .cta-section {
+        border-top: 1px solid rgba(243, 241, 236, 0.05);
+    }
+
+    /* Fix for Testimonial / Review Boxes */
+    html.dark-mode .testimonial-card {
+        background: rgba(255, 255, 255, 0.03); /* Subtle frosted glass */
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-top: 3px solid var(--accent); /* Keeps your stylish top border */
+        box-shadow: none; /* Removes harsh shadows in dark mode */
+    }
+
+    /* Fix for Custom Cursor Ring in Dark Mode */
+    html.dark-mode .cursor-ring {
+        border-color: rgba(243, 241, 236, 0.4); /* Crisp, light border */
+    }
+
+    html.dark-mode .cursor-ring.active {
+        background-color: rgba(243, 241, 236, 0.1); /* Soft light fill on hover */
+        border-color: transparent;
+    }
+
+    #theme-toggle {
+        transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    #theme-toggle:hover {
+        transform: scale(1.2) rotate(-15deg);
+    }
     /* Smooth scrolling for anchor links */
     html {
         scroll-behavior: smooth;
@@ -84,7 +146,7 @@
         border-color: transparent;
     }
 
-/*UPGRADED VISUAL MENU PAGE*/
+    /*UPGRADED VISUAL MENU PAGE*/
 
     .menu-hero {
         padding: 180px 6% 80px 6%;
@@ -311,9 +373,9 @@
     }
 
 
-    /* ==========================================================================
+    /* 
    UPGRADED: 3-IMAGE GALLERY SECTION
-   ========================================================================== */
+   */
 
     .gallery {
         padding: 0 6% 120px 6%;
@@ -438,9 +500,9 @@
         transition: transform 0.4s ease;
     }
 
-    /* ==========================================================================
+    /* 
    UPGRADED: PROCESS STEPS SECTION
-   ========================================================================== */
+   */
 
     .process-section {
         padding: 140px 6%;

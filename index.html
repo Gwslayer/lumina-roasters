@@ -17,6 +17,12 @@
 
   <link rel="stylesheet" href="./style.css">
 
+  <script>
+    if (localStorage.getItem('lumina-theme') === 'dark') {
+      document.documentElement.classList.add('dark-mode');
+    }
+  </script>
+  
 </head>
 
 <body>
@@ -30,8 +36,11 @@
     </div>
     <div class="nav-links">
       <a href="menu.html" class="interactive" aria-label="View our menu">Menu</a>
-      <a href="#process" class="interactive" aria-label="Learn about our process">Our Process</a>
-      <a href="#visit" class="interactive" aria-label="Visit our location">Visit Us</a>
+      <a href="index.html#process" class="interactive" aria-label="Learn about our process">Our Process</a>
+      <a href="index.html#visit" class="interactive" aria-label="Visit our location">Visit Us</a>
+
+      <button id="theme-toggle" class="interactive" aria-label="Toggle Dark Mode"
+        style="background: none; border: none; font-size: 1.2rem; margin-left: 15px; cursor: none;">🌙</button>
     </div>
   </nav>
 
