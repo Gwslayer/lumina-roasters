@@ -15,8 +15,13 @@
     }
 
     @keyframes pageFade {
-        from { opacity: 0; }
-        to { opacity: 1; }
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
     }
 
     /* Base Dark Mode Variables (Restored) */
@@ -39,19 +44,19 @@
 
     /* Fix for Testimonial / Review Boxes */
     html.dark-mode .testimonial-card {
-        background: rgba(255, 255, 255, 0.03); 
+        background: rgba(255, 255, 255, 0.03);
         border: 1px solid rgba(255, 255, 255, 0.08);
-        border-top: 3px solid var(--accent); 
-        box-shadow: none; 
+        border-top: 3px solid var(--accent);
+        box-shadow: none;
     }
 
     /* Fix for Custom Cursor Ring in Dark Mode */
     html.dark-mode .cursor-ring {
-        border-color: rgba(243, 241, 236, 0.4); 
+        border-color: rgba(243, 241, 236, 0.4);
     }
 
     html.dark-mode .cursor-ring.active {
-        background-color: rgba(243, 241, 236, 0.1); 
+        background-color: rgba(243, 241, 236, 0.1);
         border-color: transparent;
     }
 
@@ -877,261 +882,333 @@
    VISIT & RESERVATION PAGE
    */
 
-.visit-hero {
-    padding: 180px 6% 80px 6%;
-    text-align: center;
-}
+    .visit-hero {
+        padding: 180px 6% 80px 6%;
+        text-align: center;
+    }
 
-.visit-hero h1 {
-    font-size: clamp(3rem, 6vw, 4.5rem);
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    color: var(--text-main);
-    margin-bottom: 15px;
-}
+    .visit-hero h1 {
+        font-size: clamp(3rem, 6vw, 4.5rem);
+        font-family: 'Playfair Display', serif;
+        font-style: italic;
+        color: var(--text-main);
+        margin-bottom: 15px;
+    }
 
-.visit-hero p {
-    color: var(--text-muted);
-    font-size: 1.1rem;
-    letter-spacing: 1px;
-}
+    .visit-hero p {
+        color: var(--text-muted);
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+    }
 
-.visit-layout {
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: 80px;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 6% 120px 6%;
-}
+    .visit-layout {
+        display: grid;
+        grid-template-columns: 1fr 1.5fr;
+        gap: 80px;
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 6% 120px 6%;
+    }
 
-.visit-info h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    color: var(--text-main);
-}
+    .visit-info h2 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+        color: var(--text-main);
+    }
 
-.visit-info p {
-    color: var(--text-muted);
-    line-height: 1.8;
-    margin-bottom: 30px;
-}
+    .visit-info p {
+        color: var(--text-muted);
+        line-height: 1.8;
+        margin-bottom: 30px;
+    }
 
-.hours-block h3, .contact-block h3 {
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    margin-bottom: 10px;
-    color: var(--text-main);
-}
+    .hours-block h3,
+    .contact-block h3 {
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        margin-bottom: 10px;
+        color: var(--text-main);
+    }
 
-/* Premium Form Styling */
-.reservation-form {
-    background: #ffffff;
-    padding: 50px;
-    border-radius: 4px;
-    box-shadow: 0 20px 40px rgba(44, 38, 33, 0.04);
-    border-top: 3px solid var(--accent);
-}
+    /* Premium Form Styling */
+    .reservation-form {
+        background: #ffffff;
+        padding: 50px;
+        border-radius: 4px;
+        box-shadow: 0 20px 40px rgba(44, 38, 33, 0.04);
+        border-top: 3px solid var(--accent);
+    }
 
-.form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-}
+    .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
 
-.form-group {
-    margin-bottom: 25px;
-}
+    .form-group {
+        margin-bottom: 25px;
+    }
 
-.form-group label {
-    display: block;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 10px;
-    color: var(--text-main);
-    font-weight: 600;
-}
+    .form-group label {
+        display: block;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 10px;
+        color: var(--text-main);
+        font-weight: 600;
+    }
 
-.form-control {
-    width: 100%;
-    padding: 15px;
-    background: #F9F8F6;
-    border: 1px solid rgba(44, 38, 33, 0.1);
-    border-radius: 4px;
-    font-family: 'Inter', sans-serif;
-    font-size: 1rem;
-    color: var(--text-main);
-    transition: all 0.3s ease;
-    outline: none;
-}
+    .form-control {
+        width: 100%;
+        padding: 15px;
+        background: #F9F8F6;
+        border: 1px solid rgba(44, 38, 33, 0.1);
+        border-radius: 4px;
+        font-family: 'Inter', sans-serif;
+        font-size: 1rem;
+        color: var(--text-main);
+        transition: all 0.3s ease;
+        outline: none;
+    }
 
-/* Focus state for that premium interaction feel */
-.form-control:focus {
-    border-color: var(--accent);
-    background: #ffffff;
-    box-shadow: 0 0 0 3px rgba(184, 138, 100, 0.1);
-}
+    /* Focus state for that premium interaction feel */
+    .form-control:focus {
+        border-color: var(--accent);
+        background: #ffffff;
+        box-shadow: 0 0 0 3px rgba(184, 138, 100, 0.1);
+    }
 
-.submit-btn {
-    width: 100%;
-    text-align: center;
-    border: none;
-    margin-top: 10px;
-    cursor: pointer;
-    background: transparent;
-}
+    .submit-btn {
+        width: 100%;
+        text-align: center;
+        border: none;
+        margin-top: 10px;
+        cursor: pointer;
+        background: transparent;
+    }
 
-/* ------------------------------------------------
+    /* ------------------------------------------------
    DARK MODE OVERRIDES FOR THE FORM
    ------------------------------------------------ */
-html.dark-mode .reservation-form {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-top: 3px solid var(--accent);
-    box-shadow: none;
-}
+    html.dark-mode .reservation-form {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-top: 3px solid var(--accent);
+        box-shadow: none;
+    }
 
-html.dark-mode .form-control {
-    background: rgba(0, 0, 0, 0.2);
-    border-color: rgba(255, 255, 255, 0.1);
-    color: var(--text-main);
-}
+    html.dark-mode .form-control {
+        background: rgba(0, 0, 0, 0.2);
+        border-color: rgba(255, 255, 255, 0.1);
+        color: var(--text-main);
+    }
 
-html.dark-mode .form-control:focus {
-    border-color: var(--accent);
-    background: rgba(0, 0, 0, 0.4);
-    box-shadow: 0 0 0 3px rgba(212, 115, 36, 0.15);
-}
+    html.dark-mode .form-control:focus {
+        border-color: var(--accent);
+        background: rgba(0, 0, 0, 0.4);
+        box-shadow: 0 0 0 3px rgba(212, 115, 36, 0.15);
+    }
 
     /* 
    MOBILE OPTIMIZATION & RESPONSIVE DESIGN
    */
 
-/* Hamburger Button (Hidden on Desktop) */
-.mobile-menu-btn {
-    display: none;
-    background: none;
-    border: none;
-    color: var(--text-main);
-    z-index: 1001; /* Stays above the sliding menu */
-}
+    /* Hamburger Button (Hidden on Desktop) */
+    .mobile-menu-btn {
+        display: none;
+        background: none;
+        border: none;
+        color: var(--text-main);
+        z-index: 1001;
+        /* Stays above the sliding menu */
+    }
 
-/* Ensure button turns white in dark mode */
-html.dark-mode .mobile-menu-btn {
-    color: #F3F1EC; 
-}
+    /* Ensure button turns white in dark mode */
+    html.dark-mode .mobile-menu-btn {
+        color: #F3F1EC;
+    }
 
     /* 
    MOBILE THEME ROW BASE
    */
-.mobile-theme-row {
-    display: flex;
-    align-items: center;
-    margin-left: 15px;
-}
-
-.mobile-theme-label {
-    display: none; /* Stays invisible on Desktop */
-}
-
-@media (max-width: 850px) {
-    /* Form Layout Collapsing */
-    .visit-layout { grid-template-columns: 1fr; gap: 50px; }
-    .form-row { grid-template-columns: 1fr; gap: 0; }
-    .reservation-form { padding: 30px 20px; }
-}
-
-@media (max-width: 768px) {
-    /* 1. Fix the Navigation Bar */
-    nav { padding: 20px 6%; }
-    .mobile-menu-btn { display: block; } /* Show hamburger on mobile */
-    
-    .nav-links {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 75%; /* Gives menu more breathing room */
-        height: 100vh;
-        background: var(--bg-color);
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-start;
-        padding: 0 12%; /* Pulls content slightly away from screen edge */
-        gap: 25px; /* Tighter, more elegant spacing */
-        transition: right 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-        box-shadow: -10px 0 30px rgba(0,0,0,0.05);
-    }
-
-    /* Dark Mode Mobile Menu Background */
-    html.dark-mode .nav-links {
-        background: #0b1120;
-        box-shadow: -10px 0 30px rgba(0,0,0,0.4);
-    }
-
-    .nav-links.active { right: 0; }
-
-    /* Refined Typography */
-    .nav-links a { 
-        margin-left: 0; 
-        font-size: 1.15rem; /* Shrunk down for premium feel */
-        letter-spacing: 2px; 
-    }
-
-    /* The New Theme Row Layout */
     .mobile-theme-row {
-        margin-left: 0;
-        margin-top: 15px;
-        padding-top: 25px;
-        border-top: 1px solid rgba(44, 38, 33, 0.1); /* Elegant separator line */
-        width: 100%;
         display: flex;
-        justify-content: space-between; /* Pushes label left, switch right */
         align-items: center;
-    }
-
-    html.dark-mode .mobile-theme-row {
-        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        margin-left: 15px;
     }
 
     .mobile-theme-label {
-        display: block; /* Turns label on for mobile */
-        font-size: 0.85rem;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        color: var(--text-muted);
+        display: none;
+        /* Stays invisible on Desktop */
     }
 
-    .theme-switch { 
-        margin-left: 0; 
-        transform: scale(1.05); /* Scales the button down slightly */
-        transform-origin: right; 
-    }
- 
+    @media (max-width: 850px) {
 
-    /* 2. Typography Scaling */
-    .hero h1 { font-size: clamp(2.5rem, 10vw, 3.5rem); }
-    .story-section h2 { font-size: 1.5rem; }
-    .visit-hero h1, .menu-hero h1 { font-size: 2.5rem; }
-    .roaster-bio h3 { font-size: 2rem; }
+        /* Form Layout Collapsing */
+        .visit-layout {
+            grid-template-columns: 1fr;
+            gap: 50px;
+        }
 
-    /* 3. Whitespace & Padding Reduction */
-    .hero { height: 75vh; }
-    .story-section, .roaster-section, .process-section, .testimonials, .gallery, .cta-section {
-        padding: 80px 6%;
-    }
-    .menu-hero, .visit-hero { padding: 130px 6% 40px 6%; }
+        .form-row {
+            grid-template-columns: 1fr;
+            gap: 0;
+        }
 
-    /* 4. Grid Collapsing (Forces single column) */
-    .roaster-section, .process-steps, .testimonial-grid {
-        grid-template-columns: 1fr;
-        gap: 50px;
+        .reservation-form {
+            padding: 30px 20px;
+        }
     }
 
-    /* Fix Gallery Stacking */
-    .gallery { grid-template-columns: 1fr; gap: 20px; }
-    .gallery-item:nth-child(1), .gallery-item:nth-child(3) { margin-top: 0; height: 40vh; }
-    .gallery-item:nth-child(2) { height: 50vh; }
-    .roaster-image { height: 350px; }
-}
+    @media (max-width: 768px) {
+
+        /* 1. Fix the Navigation Bar */
+        nav {
+            padding: 20px 6%;
+        }
+
+        .mobile-menu-btn {
+            display: block;
+        }
+
+        /* Show hamburger on mobile */
+
+        .nav-links {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 75%;
+            /* Gives menu more breathing room */
+            height: 100vh;
+            background: var(--bg-color);
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0 12%;
+            /* Pulls content slightly away from screen edge */
+            gap: 25px;
+            /* Tighter, more elegant spacing */
+            transition: right 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Dark Mode Mobile Menu Background */
+        html.dark-mode .nav-links {
+            background: #0b1120;
+            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .nav-links.active {
+            right: 0;
+        }
+
+        /* Refined Typography */
+        .nav-links a {
+            margin-left: 0;
+            font-size: 1.15rem;
+            /* Shrunk down for premium feel */
+            letter-spacing: 2px;
+        }
+
+        /* The New Theme Row Layout */
+        .mobile-theme-row {
+            margin-left: 0;
+            margin-top: 15px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(44, 38, 33, 0.1);
+            /* Elegant separator line */
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            /* Pushes label left, switch right */
+            align-items: center;
+        }
+
+        html.dark-mode .mobile-theme-row {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .mobile-theme-label {
+            display: block;
+            /* Turns label on for mobile */
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+        }
+
+        .theme-switch {
+            margin-left: 0;
+            transform: scale(1.05);
+            /* Scales the button down slightly */
+            transform-origin: right;
+        }
+
+
+        /* 2. Typography Scaling */
+        .hero h1 {
+            font-size: clamp(2.5rem, 10vw, 3.5rem);
+        }
+
+        .story-section h2 {
+            font-size: 1.5rem;
+        }
+
+        .visit-hero h1,
+        .menu-hero h1 {
+            font-size: 2.5rem;
+        }
+
+        .roaster-bio h3 {
+            font-size: 2rem;
+        }
+
+        /* 3. Whitespace & Padding Reduction */
+        .hero {
+            height: 75vh;
+        }
+
+        .story-section,
+        .roaster-section,
+        .process-section,
+        .testimonials,
+        .gallery,
+        .cta-section {
+            padding: 80px 6%;
+        }
+
+        .menu-hero,
+        .visit-hero {
+            padding: 130px 6% 40px 6%;
+        }
+
+        /* 4. Grid Collapsing (Forces single column) */
+        .roaster-section,
+        .process-steps,
+        .testimonial-grid {
+            grid-template-columns: 1fr;
+            gap: 50px;
+        }
+
+        /* Fix Gallery Stacking */
+        .gallery {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .gallery-item:nth-child(1),
+        .gallery-item:nth-child(3) {
+            margin-top: 0;
+            height: 40vh;
+        }
+
+        .gallery-item:nth-child(2) {
+            height: 50vh;
+        }
+
+        .roaster-image {
+            height: 350px;
+        }
+    }
