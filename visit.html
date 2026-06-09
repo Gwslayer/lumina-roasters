@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Visit Us | Lumina Roasters</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    
+    <script>
+        if (localStorage.getItem('lumina-theme') === 'dark') {
+            document.documentElement.classList.add('dark-mode');
+        }
+    </script>
+</head>
+<body>
+
+    <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
+
+    <nav>
+        <div class="logo">
+            <a href="index.html" class="interactive" style="text-decoration: none; color: inherit;">Lumina.</a>
+        </div>
+        <div class="nav-links">
+            <a href="menu.html" class="interactive" aria-label="View our menu">Menu</a>
+            <a href="index.html#process" class="interactive" aria-label="Learn about our process">Our Process</a>
+            <a href="visit.html" class="interactive" aria-label="Visit our location">Visit Us</a>
+
+            <button id="theme-toggle" class="theme-switch interactive" aria-label="Toggle Dark Mode">
+                <span class="switch-thumb"></span>
+                <span class="track-icon icon-sun">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y1="3"></line>
+                        <line x1="12" y1="21" x2="12" y1="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y1="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y1="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y1="12"></line>
+                        <line x1="21" y1="12" x2="23" y1="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y1="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y1="4.22"></line>
+                    </svg>
+                </span>
+                <span class="track-icon icon-moon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <span class="icon-stars" aria-hidden="true">
+                        <span class="star-particle star-1"></span>
+                        <span class="star-particle star-2"></span>
+                        <span class="star-particle star-3"></span>
+                    </span>
+                </span>
+            </button>
+        </div>
+    </nav>
+
+    <header class="visit-hero">
+        <h1>Join Us</h1>
+        <p>Reserve a table for slow mornings and intentional moments.</p>
+    </header>
+
+    <main class="visit-layout">
+        
+        <aside class="visit-info">
+            <h2>The Roastery</h2>
+            <p>123 Bodakdev Road<br>Vastrapur, Ahmedabad 380015</p>
+            
+            <div class="hours-block">
+                <h3>Hours</h3>
+                <p>Mon – Fri : 7:00 AM – 6:00 PM</p>
+                <p>Sat – Sun : 8:00 AM – 5:00 PM</p>
+            </div>
+
+            <div class="contact-block">
+                <h3>Contact</h3>
+                <p>hello@luminaroasters.in</p>
+                <p>+91 98765 43210</p>
+            </div>
+        </aside>
+
+        <section class="visit-form-wrapper">
+            <form class="reservation-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" class="interactive form-control" placeholder="Maya Patel" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" class="interactive form-control" placeholder="maya@example.com" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="date">Date</label>
+                        <input type="date" id="date" class="interactive form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="guests">Guests</label>
+                        <select id="guests" class="interactive form-control">
+                            <option value="1">1 Person</option>
+                            <option value="2" selected>2 People</option>
+                            <option value="3">3 People</option>
+                            <option value="4">4+ People</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Special Requests (Optional)</label>
+                    <textarea id="message" rows="3" class="interactive form-control" placeholder="Celebrating an anniversary, requesting a window seat..."></textarea>
+                </div>
+
+                <button type="submit" class="interactive cta-button submit-btn">Confirm Reservation</button>
+            </form>
+        </section>
+
+    </main>
+
+    <script type="module" src="./script.js"></script>
+</body>
+</html>

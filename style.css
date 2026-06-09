@@ -894,3 +894,150 @@
             height: 350px;
         }
     }
+
+    /* ==========================================================================
+   VISIT & RESERVATION PAGE
+   ========================================================================== */
+
+.visit-hero {
+    padding: 180px 6% 80px 6%;
+    text-align: center;
+}
+
+.visit-hero h1 {
+    font-size: clamp(3rem, 6vw, 4.5rem);
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--text-main);
+    margin-bottom: 15px;
+}
+
+.visit-hero p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+}
+
+.visit-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 80px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 6% 120px 6%;
+}
+
+.visit-info h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: var(--text-main);
+}
+
+.visit-info p {
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+.hours-block h3, .contact-block h3 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 10px;
+    color: var(--text-main);
+}
+
+/* Premium Form Styling */
+.reservation-form {
+    background: #ffffff;
+    padding: 50px;
+    border-radius: 4px;
+    box-shadow: 0 20px 40px rgba(44, 38, 33, 0.04);
+    border-top: 3px solid var(--accent);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+.form-control {
+    width: 100%;
+    padding: 15px;
+    background: #F9F8F6;
+    border: 1px solid rgba(44, 38, 33, 0.1);
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: var(--text-main);
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+/* Focus state for that premium interaction feel */
+.form-control:focus {
+    border-color: var(--accent);
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(184, 138, 100, 0.1);
+}
+
+.submit-btn {
+    width: 100%;
+    text-align: center;
+    border: none;
+    margin-top: 10px;
+    cursor: pointer;
+    background: transparent;
+}
+
+/* ------------------------------------------------
+   DARK MODE OVERRIDES FOR THE FORM
+   ------------------------------------------------ */
+html.dark-mode .reservation-form {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 3px solid var(--accent);
+    box-shadow: none;
+}
+
+html.dark-mode .form-control {
+    background: rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: var(--text-main);
+}
+
+html.dark-mode .form-control:focus {
+    border-color: var(--accent);
+    background: rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 0 3px rgba(212, 115, 36, 0.15);
+}
+
+/* Media Query for mobile formatting */
+@media (max-width: 850px) {
+    .visit-layout {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+    .reservation-form {
+        padding: 30px 20px;
+    }
+}
