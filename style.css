@@ -1023,6 +1023,19 @@ html.dark-mode .mobile-menu-btn {
     color: #F3F1EC; 
 }
 
+    /* 
+   MOBILE THEME ROW BASE
+   */
+.mobile-theme-row {
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+}
+
+.mobile-theme-label {
+    display: none; /* Stays invisible on Desktop */
+}
+
 @media (max-width: 850px) {
     /* Form Layout Collapsing */
     .visit-layout { grid-template-columns: 1fr; gap: 50px; }
@@ -1038,15 +1051,15 @@ html.dark-mode .mobile-menu-btn {
     .nav-links {
         position: fixed;
         top: 0;
-        right: -100%; /* Hides menu off-screen completely */
-        width: 70%; /* Slides out to cover 70% of screen */
+        right: -100%;
+        width: 75%; /* Gives menu more breathing room */
         height: 100vh;
         background: var(--bg-color);
         flex-direction: column;
         justify-content: center;
         align-items: flex-start;
-        padding-left: 10%;
-        gap: 40px;
+        padding: 0 12%; /* Pulls content slightly away from screen edge */
+        gap: 25px; /* Tighter, more elegant spacing */
         transition: right 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         box-shadow: -10px 0 30px rgba(0,0,0,0.05);
     }
@@ -1057,9 +1070,45 @@ html.dark-mode .mobile-menu-btn {
         box-shadow: -10px 0 30px rgba(0,0,0,0.4);
     }
 
-    .nav-links.active { right: 0; /* Slides menu in */ }
-    .nav-links a { margin-left: 0; font-size: 1.5rem; }
-    .theme-switch { margin-left: 0; transform: scale(1.2); transform-origin: left; }
+    .nav-links.active { right: 0; }
+
+    /* Refined Typography */
+    .nav-links a { 
+        margin-left: 0; 
+        font-size: 1.15rem; /* Shrunk down for premium feel */
+        letter-spacing: 2px; 
+    }
+
+    /* The New Theme Row Layout */
+    .mobile-theme-row {
+        margin-left: 0;
+        margin-top: 15px;
+        padding-top: 25px;
+        border-top: 1px solid rgba(44, 38, 33, 0.1); /* Elegant separator line */
+        width: 100%;
+        display: flex;
+        justify-content: space-between; /* Pushes label left, switch right */
+        align-items: center;
+    }
+
+    html.dark-mode .mobile-theme-row {
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .mobile-theme-label {
+        display: block; /* Turns label on for mobile */
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--text-muted);
+    }
+
+    .theme-switch { 
+        margin-left: 0; 
+        transform: scale(1.05); /* Scales the button down slightly */
+        transform-origin: right; 
+    }
+ 
 
     /* 2. Typography Scaling */
     .hero h1 { font-size: clamp(2.5rem, 10vw, 3.5rem); }
