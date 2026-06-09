@@ -931,6 +931,37 @@
         color: var(--text-main);
     }
 
+    /* Premium Map Container */
+.map-container {
+    margin-top: 40px;
+    width: 100%;
+    height: 220px;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid rgba(44, 38, 33, 0.1);
+    /* Desaturates the map slightly so it doesn't clash with your brand colors */
+    filter: grayscale(20%) contrast(1.1);
+    transition: filter 0.4s ease, border-color 0.4s ease;
+}
+
+/* Brings the color back when they hover over it */
+.map-container:hover {
+    filter: grayscale(0%) contrast(1);
+}
+
+/*
+   THE DARK MODE MAP TRICK
+*/
+html.dark-mode .map-container {
+    border-color: rgba(255, 255, 255, 0.05);
+    /* Inverts the map colors to create a custom Dark Mode map */
+    filter: invert(90%) hue-rotate(180deg) grayscale(30%) contrast(1.2);
+}
+
+html.dark-mode .map-container:hover {
+    filter: invert(90%) hue-rotate(180deg) grayscale(0%) contrast(1.2);
+}
+
     /* Premium Form Styling */
     .reservation-form {
         background: #ffffff;
