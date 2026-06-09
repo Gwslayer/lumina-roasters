@@ -1212,3 +1212,21 @@
             height: 350px;
         }
     }
+
+    @media (min-width: 769px) {
+        .mobile-theme-label {
+            display: none;
+        }
+    }
+
+    /* Hides "Home" link on desktop */
+    .mobile-only-link {
+        display: none;
+    }
+
+    /* Reveals "Home" link inside mobile menu */
+    @media (max-width: 768px) {
+        .mobile-only-link {
+            display: block;
+        }
+    }
