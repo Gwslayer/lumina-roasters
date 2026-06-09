@@ -872,32 +872,10 @@
         line-height: 1.8;
     }
 
-    @media (max-width: 768px) {
 
-        .roaster-section,
-        .process-steps,
-        .testimonial-grid {
-            grid-template-columns: 1fr;
-        }
-
-        .gallery {
-            grid-template-columns: 1fr;
-        }
-
-        .gallery-item:nth-child(1),
-        .gallery-item:nth-child(3) {
-            margin-top: 0;
-            height: 50vh;
-        }
-
-        .roaster-image {
-            height: 350px;
-        }
-    }
-
-    /* ==========================================================================
+    /* 
    VISIT & RESERVATION PAGE
-   ========================================================================== */
+   */
 
 .visit-hero {
     padding: 180px 6% 80px 6%;
@@ -1027,17 +1005,84 @@ html.dark-mode .form-control:focus {
     box-shadow: 0 0 0 3px rgba(212, 115, 36, 0.15);
 }
 
-/* Media Query for mobile formatting */
+    /* 
+   MOBILE OPTIMIZATION & RESPONSIVE DESIGN
+   */
+
+/* Hamburger Button (Hidden on Desktop) */
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-main);
+    z-index: 1001; /* Stays above the sliding menu */
+}
+
+/* Ensure button turns white in dark mode */
+html.dark-mode .mobile-menu-btn {
+    color: #F3F1EC; 
+}
+
 @media (max-width: 850px) {
-    .visit-layout {
+    /* Form Layout Collapsing */
+    .visit-layout { grid-template-columns: 1fr; gap: 50px; }
+    .form-row { grid-template-columns: 1fr; gap: 0; }
+    .reservation-form { padding: 30px 20px; }
+}
+
+@media (max-width: 768px) {
+    /* 1. Fix the Navigation Bar */
+    nav { padding: 20px 6%; }
+    .mobile-menu-btn { display: block; } /* Show hamburger on mobile */
+    
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%; /* Hides menu off-screen completely */
+        width: 70%; /* Slides out to cover 70% of screen */
+        height: 100vh;
+        background: var(--bg-color);
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        padding-left: 10%;
+        gap: 40px;
+        transition: right 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        box-shadow: -10px 0 30px rgba(0,0,0,0.05);
+    }
+
+    /* Dark Mode Mobile Menu Background */
+    html.dark-mode .nav-links {
+        background: #0b1120;
+        box-shadow: -10px 0 30px rgba(0,0,0,0.4);
+    }
+
+    .nav-links.active { right: 0; /* Slides menu in */ }
+    .nav-links a { margin-left: 0; font-size: 1.5rem; }
+    .theme-switch { margin-left: 0; transform: scale(1.2); transform-origin: left; }
+
+    /* 2. Typography Scaling */
+    .hero h1 { font-size: clamp(2.5rem, 10vw, 3.5rem); }
+    .story-section h2 { font-size: 1.5rem; }
+    .visit-hero h1, .menu-hero h1 { font-size: 2.5rem; }
+    .roaster-bio h3 { font-size: 2rem; }
+
+    /* 3. Whitespace & Padding Reduction */
+    .hero { height: 75vh; }
+    .story-section, .roaster-section, .process-section, .testimonials, .gallery, .cta-section {
+        padding: 80px 6%;
+    }
+    .menu-hero, .visit-hero { padding: 130px 6% 40px 6%; }
+
+    /* 4. Grid Collapsing (Forces single column) */
+    .roaster-section, .process-steps, .testimonial-grid {
         grid-template-columns: 1fr;
         gap: 50px;
     }
-    .form-row {
-        grid-template-columns: 1fr;
-        gap: 0;
-    }
-    .reservation-form {
-        padding: 30px 20px;
-    }
+
+    /* Fix Gallery Stacking */
+    .gallery { grid-template-columns: 1fr; gap: 20px; }
+    .gallery-item:nth-child(1), .gallery-item:nth-child(3) { margin-top: 0; height: 40vh; }
+    .gallery-item:nth-child(2) { height: 50vh; }
+    .roaster-image { height: 350px; }
 }

@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Visit Us | Lumina Roasters</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
-    
+
     <script>
         if (localStorage.getItem('lumina-theme') === 'dark') {
             document.documentElement.classList.add('dark-mode');
         }
     </script>
 </head>
+
 <body>
 
     <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
@@ -22,6 +26,14 @@
         <div class="logo">
             <a href="index.html" class="interactive" style="text-decoration: none; color: inherit;">Lumina.</a>
         </div>
+        <button class="mobile-menu-btn interactive" id="mobile-toggle" aria-label="Open Menu">
+            <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none"
+                stroke-linecap="round">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
         <div class="nav-links">
             <a href="menu.html" class="interactive" aria-label="View our menu">Menu</a>
             <a href="index.html#process" class="interactive" aria-label="Learn about our process">Our Process</a>
@@ -62,11 +74,11 @@
     </header>
 
     <main class="visit-layout">
-        
+
         <aside class="visit-info">
             <h2>The Roastery</h2>
             <p>123 Bodakdev Road<br>Vastrapur, Ahmedabad 380015</p>
-            
+
             <div class="hours-block">
                 <h3>Hours</h3>
                 <p>Mon – Fri : 7:00 AM – 6:00 PM</p>
@@ -89,7 +101,8 @@
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" id="email" class="interactive form-control" placeholder="maya@example.com" required>
+                        <input type="email" id="email" class="interactive form-control" placeholder="maya@example.com"
+                            required>
                     </div>
                 </div>
 
@@ -111,7 +124,8 @@
 
                 <div class="form-group">
                     <label for="message">Special Requests (Optional)</label>
-                    <textarea id="message" rows="3" class="interactive form-control" placeholder="Celebrating an anniversary, requesting a window seat..."></textarea>
+                    <textarea id="message" rows="3" class="interactive form-control"
+                        placeholder="Celebrating an anniversary, requesting a window seat..."></textarea>
                 </div>
 
                 <button type="submit" class="interactive cta-button submit-btn">Confirm Reservation</button>
@@ -122,4 +136,5 @@
 
     <script type="module" src="./script.js"></script>
 </body>
+
 </html>
