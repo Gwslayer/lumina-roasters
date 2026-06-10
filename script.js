@@ -7,16 +7,20 @@ let ringX = 0, ringY = 0;
 document.addEventListener('mousemove', (e) => {
   mouseX = e.clientX;
   mouseY = e.clientY;
-  dot.style.left = mouseX + 'px';
-  dot.style.top = mouseY + 'px';
+  if (dot) {
+    dot.style.left = mouseX + 'px';
+    dot.style.top = mouseY + 'px';
+  }
 });
 
 function animateRing() {
   ringX += (mouseX - ringX) * 0.2;
   ringY += (mouseY - ringY) * 0.2;
 
-  ring.style.left = ringX + 'px';
-  ring.style.top = ringY + 'px';
+  if (ring) {
+    ring.style.left = ringX + 'px';
+    ring.style.top = ringY + 'px';
+  }
 
   requestAnimationFrame(animateRing);
 }
@@ -25,12 +29,12 @@ animateRing();
 const interactives = document.querySelectorAll('.interactive, a');
 interactives.forEach(el => {
   el.addEventListener('mouseenter', () => {
-    ring.classList.add('active');
-    dot.style.transform = 'translate(-50%, -50%) scale(0.5)';
+    if (ring) ring.classList.add('active');
+    if (dot) dot.style.transform = 'translate(-50%, -50%) scale(0.5)';
   });
   el.addEventListener('mouseleave', () => {
-    ring.classList.remove('active');
-    dot.style.transform = 'translate(-50%, -50%) scale(1)';
+    if (ring) ring.classList.remove('active');
+    if (dot) dot.style.transform = 'translate(-50%, -50%) scale(1)';
   });
 });
 const reveals = document.querySelectorAll('.reveal');
@@ -57,10 +61,14 @@ if (themeToggle) {
   themeToggle.addEventListener('click', () => {
     html.classList.toggle('dark-mode');
 
-    if (html.classList.contains('dark-mode')) {
-      localStorage.setItem('lumina-theme', 'dark');
-    } else {
-      localStorage.setItem('lumina-theme', 'light');
+    try {
+      if (html.classList.contains('dark-mode')) {
+        localStorage.setItem('lumina-theme', 'dark');
+      } else {
+        localStorage.setItem('lumina-theme', 'light');
+      }
+    } catch (e) {
+      console.warn("Could not save theme preference to localStorage.", e);
     }
   });
 }
