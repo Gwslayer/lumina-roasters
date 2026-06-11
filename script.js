@@ -203,4 +203,12 @@ if (reservationForm && popupOverlay) {
       popupOverlay.setAttribute('aria-hidden', 'true');
     }
   });
+
+  // Accessibility: Dismiss modal with the Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && popupOverlay.classList.contains('active')) {
+      popupOverlay.classList.remove('active');
+      popupOverlay.setAttribute('aria-hidden', 'true');
+    }
+  });
 }

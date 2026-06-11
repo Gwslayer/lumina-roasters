@@ -348,7 +348,7 @@
     /* New Grid System for Images */
     .menu-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 40px;
     }
 
@@ -1348,4 +1348,57 @@
         background: #1e293b;
         border-color: var(--accent);
         box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+    }
+
+    /* 
+       COMPREHENSIVE MOBILE OPTIMIZATIONS (Smartphones)
+    */
+    @media (max-width: 768px) {
+        /* Expand tap targets for mobile nav links */
+        .nav-links a {
+            padding: 12px 0;
+            width: 100%;
+        }
+        /* Make CTA buttons full width for easy thumb tapping */
+        .cta-button {
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+        /* Adjust the mobile menu hamburger to have a better touch area */
+        .mobile-menu-btn {
+            padding: 8px;
+            margin-right: -8px;
+        }
+        /* Better modal fit for small screens */
+        .popup-card {
+            padding: 40px 25px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        /* Ultra-small screens (iPhone SE, older Androids) */
+        nav { padding: 15px 5%; }
+        .nav-links { width: 100%; padding: 0 8%; }
+        
+        /* Scale down oversized typography for tiny screens */
+        .hero h1 { font-size: clamp(2rem, 12vw, 2.8rem); }
+        .story-section h2 { font-size: 1.35rem; }
+        .process-section h2, .testimonials h2 { font-size: 2rem; }
+        
+        /* Reduce excessive vertical space taken by images */
+        .gallery-item:nth-child(1),
+        .gallery-item:nth-child(2),
+        .gallery-item:nth-child(3),
+        .roaster-image {
+            height: 280px;
+        }
+        
+        /* Tighter padding to maximize screen real estate */
+        .story-section, .roaster-section, .process-section, 
+        .testimonials, .gallery, .cta-section {
+            padding: 60px 5%;
+        }
+        .menu-hero, .visit-hero { padding: 110px 5% 30px 5%; }
+        .visit-layout, .menu-board { padding: 0 5% 80px 5%; }
     }
