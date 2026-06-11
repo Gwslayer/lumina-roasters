@@ -226,26 +226,23 @@
 
     /*sticky frosted-glass navigation */
     nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 40px 6%;
         position: fixed;
         top: 0;
         width: 100%;
         z-index: 1000;
-        /* More solid, bright background so text is completely readable */
         background: rgba(255, 255, 255, 0.92);
-        /* Softer, more elegant blur */
         backdrop-filter: blur(6px);
         -webkit-backdrop-filter: blur(6px);
-        /* A very subtle line to separate the nav from the hero image */
         border-bottom: 1px solid rgba(44, 38, 33, 0.08);
         transition: all 0.4s ease;
     }
 
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        cursor: none;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    .js-enabled * { cursor: none; }
 
     body {
         background-color: var(--bg-color);
@@ -414,16 +411,6 @@
         .cursor-ring {
             display: none !important;
         }
-    }
-
-
-    nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 40px 6%;
-        background: transparent;
-        border-bottom: 1px solid rgba(44, 38, 33, 0.08);
     }
 
     .logo {

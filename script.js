@@ -1,3 +1,6 @@
+// Add a class to indicate that JavaScript is active
+document.documentElement.classList.add('js-enabled');
+
 const dot = document.getElementById('cursor-dot');
 const ring = document.getElementById('cursor-ring');
 
@@ -78,40 +81,31 @@ if (themeToggle) {
   */
 const mobileToggle = document.getElementById('mobile-toggle');
 const navLinks = document.querySelector('.nav-links');
+const ICONS = {
+  menu: `
+    <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>`,
+  close: `
+    <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>`
+};
 
 if (mobileToggle && navLinks) {
   mobileToggle.addEventListener('click', () => {
-    // Slide the menu in or out
     navLinks.classList.toggle('active');
-
-    // Animate the hamburger into an 'X'
-    if (navLinks.classList.contains('active')) {
-      mobileToggle.innerHTML = `
-        <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round">
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
-        </svg>`;
-    } else {
-      mobileToggle.innerHTML = `
-        <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round">
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
-        </svg>`;
-    }
+    mobileToggle.innerHTML = navLinks.classList.contains('active') ? ICONS.close : ICONS.menu;
   });
 
-  // Close the menu automatically when a link is clicked
   const links = navLinks.querySelectorAll('a');
   links.forEach(link => {
     link.addEventListener('click', () => {
       navLinks.classList.remove('active');
-      mobileToggle.innerHTML = `
-        <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round">
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
-        </svg>`;
+      mobileToggle.innerHTML = ICONS.menu;
     });
   });
 }
