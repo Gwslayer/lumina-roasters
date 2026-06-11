@@ -1272,9 +1272,9 @@
         }
     }
 
-    /* ==========================================================================
+    /* 
    PREMIUM RESERVATION CONFIRMATION POPUP MODAL
-   ========================================================================== */
+   */
     .popup-overlay {
         position: fixed;
         top: 0;
@@ -1386,7 +1386,12 @@
     @media (max-width: 480px) {
         /* Ultra-small screens (iPhone SE, older Androids) */
         nav { padding: 15px 5%; }
-        .nav-links { width: 100%; padding: 0 8%; }
+        
+        /* Restores a 90px top padding window to safely clear the logo area */
+        .nav-links { 
+            width: 100%; 
+            padding: 90px 8% 40px 8%; 
+        }
         
         /* Scale down oversized typography for tiny screens */
         .hero h1 { font-size: clamp(2rem, 12vw, 2.8rem); }
