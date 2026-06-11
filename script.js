@@ -135,3 +135,72 @@ if (mobileToggle && navLinks) {
     });
   });
 }
+
+/* ASYNCHRONOUS RESERVATION SUBMISSION & MODAL LOGIC
+*/
+const reservationForm = document.querySelector('.reservation-form');
+const popupOverlay = document.getElementById('reservation-popup');
+const closePopupBtn = document.getElementById('close-popup');
+
+if (reservationForm && popupOverlay) {
+  reservationForm.addEventListener('submit', (e) => {
+    e.preventDefault(); // Halt default browser redirect sequence
+
+    const submitBtn = reservationForm.querySelector('.submit-btn');
+    const originalText = submitBtn.innerHTML;
+    
+    // Smooth interaction state transition
+    submitBtn.innerHTML = 'Securing Table...';
+    submitBtn.disabled = true;
+
+    // Compile input parameters dynamically
+    const formData = new FormData(reservationForm);
+    const formObject = Object.fromEntries(formData);
+
+    // Ship data payload securely to Web3Forms API
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(formObject)
+    })
+    .then(async (res) => {
+      if (res.status === 200) {
+        // Render success popup and clear parameters
+        popupOverlay.classList.add('active');
+        popupOverlay.setAttribute('aria-hidden', 'false');
+        reservationForm.reset();
+      } else {
+        const errorData = await res.json();
+        alert(errorData.message || "Something went wrong. Please check fields and resubmit.");
+      }
+    })
+    .catch((err) => {
+      console.error("Pipeline connectivity loss error:", err);
+      alert("A system network error occurred. Please test your internet link.");
+    })
+    .finally(() => {
+      // Revert mechanical button UI layers
+      submitBtn.innerHTML = originalText;
+      submitBtn.disabled = false;
+    });
+  });
+
+  // Action listeners to dismiss modal window
+  if (closePopupBtn) {
+    closePopupBtn.addEventListener('click', () => {
+      popupOverlay.classList.remove('active');
+      popupOverlay.setAttribute('aria-hidden', 'true');
+    });
+  }
+
+  // Dismiss by intercepting out-of-bounds clicks (overlay background click)
+  popupOverlay.addEventListener('click', (e) => {
+    if (e.target === popupOverlay) {
+      popupOverlay.classList.remove('active');
+      popupOverlay.setAttribute('aria-hidden', 'true');
+    }
+  });
+}

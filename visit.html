@@ -179,6 +179,20 @@
     </main>
 
     <script type="module" src="./script.js"></script>
+
+    <div id="reservation-popup" class="popup-overlay" aria-hidden="true">
+        <div class="popup-card">
+            <div class="popup-icon">
+                <svg viewBox="0 0 24 24" width="44" height="44" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+            </div>
+            <h2>Table Reserved.</h2>
+            <p>Thank you for pausing with us. A notification has been sent to your inbox, and we look forward to greeting you at the roastery.</p>
+            <button id="close-popup" class="interactive cta-button popup-close-btn" aria-label="Close Confirmation Window">Close</button>
+        </div>
+    </div>
 </body>
 
 </html>
