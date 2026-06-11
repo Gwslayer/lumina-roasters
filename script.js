@@ -15,13 +15,17 @@ const ring = document.getElementById('cursor-ring');
 
 let mouseX = 0, mouseY = 0;
 let ringX = 0, ringY = 0;
+let isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
 
 document.addEventListener('mousemove', (e) => {
+  if (isTouchDevice) return; // Prevent unnecessary variable updates on mobile
   mouseX = e.clientX;
   mouseY = e.clientY;
 });
 
 function animateCursor() {
+  if (isTouchDevice) return; // Completely halt the loop on mobile to save battery and CPU
+
   ringX += (mouseX - ringX) * 0.2;
   ringY += (mouseY - ringY) * 0.2;
 
@@ -36,15 +40,20 @@ function animateCursor() {
 
   requestAnimationFrame(animateCursor);
 }
-animateCursor();
+
+if (!isTouchDevice) {
+  animateCursor();
+}
 
 const interactives = document.querySelectorAll('.interactive, a');
 interactives.forEach(el => {
   el.addEventListener('mouseenter', () => {
+    if (isTouchDevice) return;
     if (ring) ring.classList.add('active');
     if (dot) dot.style.transform = 'translate(-50%, -50%) scale(0.5)';
   });
   el.addEventListener('mouseleave', () => {
+    if (isTouchDevice) return;
     if (ring) ring.classList.remove('active');
     if (dot) dot.style.transform = 'translate(-50%, -50%) scale(1)';
   });

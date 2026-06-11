@@ -425,6 +425,8 @@
         font-size: 1.5rem;
         font-weight: 600;
         letter-spacing: 1px;
+        position: relative;
+        z-index: 1001; /* Keeps logo clickable above mobile menus */
     }
 
     .nav-links {
@@ -809,6 +811,7 @@
         opacity: 0;
         transform: translateY(40px);
         transition: all 1s cubic-bezier(0.25, 0.1, 0.25, 1);
+        will-change: opacity, transform; /* Hardware acceleration hint for smoother scroll reveals */
     }
 
     .reveal.active {
@@ -1055,6 +1058,7 @@
         background: none;
         border: none;
         color: var(--text-main);
+        position: relative; /* Required for z-index to function */
         z-index: 1001;
         /* Stays above the sliding menu */
     }
@@ -1112,20 +1116,23 @@
         .nav-links {
             position: fixed;
             top: 0;
-            right: -100%;
+            right: 0;
+            transform: translateX(100%); /* Replaces animating 'right' for better GPU performance */
             width: 75%;
             /* Gives menu more breathing room */
-            height: 100vh;
+            height: 100dvh; /* Uses dynamic viewport height to prevent iOS/Android address bar cropping */
             background: var(--bg-color);
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start; /* Safer for landscape scrolling */
             align-items: flex-start;
-            padding: 0 12%;
+            padding: 100px 12% 40px 12%; /* Clear the header space and allow scrolling */
             /* Pulls content slightly away from screen edge */
             gap: 25px;
             /* Tighter, more elegant spacing */
-            transition: right 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            overflow-y: auto; /* Allow scrolling if screen is too short */
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
             box-shadow: -10px 0 30px rgba(0, 0, 0, 0.05);
+            will-change: transform;
         }
 
         /* Dark Mode Mobile Menu Background */
@@ -1135,7 +1142,7 @@
         }
 
         .nav-links.active {
-            right: 0;
+            transform: translateX(0);
         }
 
         /* Refined Typography */
