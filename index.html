@@ -38,9 +38,11 @@
   <link rel="stylesheet" href="./style.css">
 
   <script>
-    if (localStorage.getItem('lumina-theme') === 'dark') {
-      document.documentElement.classList.add('dark-mode');
-    }
+    try {
+      if (localStorage.getItem('lumina-theme') === 'dark') {
+        document.documentElement.classList.add('dark-mode');
+      }
+    } catch (e) {}
   </script>
 
 </head>
@@ -104,6 +106,7 @@
     </div>
   </nav>
 
+  <main>
   <section class="hero">
     <div class="hero-image-container interactive">
       <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&w=1920&q=80"
@@ -193,17 +196,19 @@
       </div>
     </div>
   </section>
+  </main>
 
-  <section class="cta-section reveal" id="visit">
+  <footer class="cta-section reveal" id="visit">
     <h2>Ready to pause?</h2>
     <a href="visit.html" class="cta-button interactive" aria-label="Reserve your table now">Reserve Now</a>
     <div class="footer-text">
       <p>Open Monday–Friday, 7am–6pm<br>
         Saturday–Sunday, 8am–5pm</p>
-      <p style="margin-top: 20px; font-size: 0.85rem; color: var(--text-muted);">Lumina Roasters © 2026 — Ethically
+      <p style="margin-top: 20px; font-size: 0.85rem; color: var(--text-muted);">Lumina Roasters © <span id="current-year">2026</span> — Ethically
         sourced, locally roasted</p>
     </div>
-  </section>
+  </footer>
+
   <script type="module" src="./script.js"></script>
 </body>
 

@@ -1,6 +1,15 @@
 // Add a class to indicate that JavaScript is active
 document.documentElement.classList.add('js-enabled');
 
+// Initialize theme from localStorage on page load
+try {
+  if (localStorage.getItem('lumina-theme') === 'dark') {
+    document.documentElement.classList.add('dark-mode');
+  }
+} catch (e) {
+  console.warn("Could not read theme preference from localStorage.", e);
+}
+
 const dot = document.getElementById('cursor-dot');
 const ring = document.getElementById('cursor-ring');
 
@@ -10,24 +19,24 @@ let ringX = 0, ringY = 0;
 document.addEventListener('mousemove', (e) => {
   mouseX = e.clientX;
   mouseY = e.clientY;
+});
+
+function animateCursor() {
+  ringX += (mouseX - ringX) * 0.2;
+  ringY += (mouseY - ringY) * 0.2;
+
   if (dot) {
     dot.style.left = mouseX + 'px';
     dot.style.top = mouseY + 'px';
   }
-});
-
-function animateRing() {
-  ringX += (mouseX - ringX) * 0.2;
-  ringY += (mouseY - ringY) * 0.2;
-
   if (ring) {
     ring.style.left = ringX + 'px';
     ring.style.top = ringY + 'px';
   }
 
-  requestAnimationFrame(animateRing);
+  requestAnimationFrame(animateCursor);
 }
-animateRing();
+animateCursor();
 
 const interactives = document.querySelectorAll('.interactive, a');
 interactives.forEach(el => {
@@ -76,6 +85,21 @@ if (themeToggle) {
   });
 }
 
+// Dynamic Copyright Year
+const yearElement = document.getElementById('current-year');
+if (yearElement) {
+  yearElement.textContent = new Date().getFullYear();
+}
+
+// Highlight Active Navigation Link
+const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+document.querySelectorAll('.nav-links a').forEach(link => {
+  const href = link.getAttribute('href');
+  if (href === currentPage) {
+    link.classList.add('active-page');
+  }
+});
+
 /* 
    MOBILE HAMBURGER MENU LOGIC
   */
@@ -97,8 +121,9 @@ const ICONS = {
 
 if (mobileToggle && navLinks) {
   mobileToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    mobileToggle.innerHTML = navLinks.classList.contains('active') ? ICONS.close : ICONS.menu;
+    const isActive = navLinks.classList.toggle('active');
+    mobileToggle.innerHTML = isActive ? ICONS.close : ICONS.menu;
+    mobileToggle.setAttribute('aria-expanded', isActive);
   });
 
   const links = navLinks.querySelectorAll('a');
@@ -106,6 +131,7 @@ if (mobileToggle && navLinks) {
     link.addEventListener('click', () => {
       navLinks.classList.remove('active');
       mobileToggle.innerHTML = ICONS.menu;
+      mobileToggle.setAttribute('aria-expanded', 'false');
     });
   });
 }
