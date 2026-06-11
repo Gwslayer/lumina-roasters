@@ -228,7 +228,10 @@
         box-sizing: border-box;
     }
 
-    .js-enabled * {
+    /* Restrict style matching to body level */
+    .js-enabled body,
+    .js-enabled a,
+    .js-enabled .interactive {
         cursor: none;
     }
 
@@ -258,8 +261,12 @@
         background-color: var(--text-main);
         border-radius: 50%;
         pointer-events: none;
-        transform: translate(-50%, -50%);
-        z-index: 10002; /* Bumped to stay visible above popup modals */
+        z-index: 10002;
+        margin-left: -3px;
+        /* Statically offsets centering */
+        margin-top: -3px;
+        transform: translate3d(0, 0, 0);
+        will-change: transform;
     }
 
     .cursor-ring {
@@ -271,9 +278,13 @@
         border: 1px solid rgba(44, 38, 33, 0.4);
         border-radius: 50%;
         pointer-events: none;
-        transform: translate(-50%, -50%);
-        z-index: 10001; /* Bumped to stay visible above popup modals */
-        transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+        z-index: 10001;
+        margin-left: -18px;
+        margin-top: -18px;
+        transform: translate3d(0, 0, 0);
+        will-change: transform;
+        transition: background-color 0.3s ease, border-color 0.3s ease;
+        /* Removed width/height transition */
     }
 
     .cursor-ring.active {
@@ -407,7 +418,8 @@
         font-weight: 600;
         letter-spacing: 1px;
         position: relative;
-        z-index: 1001; /* Keeps logo clickable above mobile menus */
+        z-index: 1001;
+        /* Keeps logo clickable above mobile menus */
     }
 
     .nav-links {
@@ -792,7 +804,6 @@
         opacity: 0;
         transform: translateY(40px);
         transition: all 1s cubic-bezier(0.25, 0.1, 0.25, 1);
-        will-change: opacity, transform; /* Hardware acceleration hint for smoother scroll reveals */
     }
 
     .reveal.active {
@@ -800,9 +811,9 @@
         transform: translateY(0);
     }
 
-    /* ==========================================================================
+    /* 
    UPGRADED: CALL TO ACTION & FOOTER
-   ========================================================================== */
+   */
 
     .cta-section {
         padding: 160px 6% 80px 6%;
@@ -1039,7 +1050,8 @@
         background: none;
         border: none;
         color: var(--text-main);
-        position: relative; /* Required for z-index to function */
+        position: relative;
+        /* Required for z-index to function */
         z-index: 1001;
         /* Stays above the sliding menu */
     }
@@ -1098,19 +1110,24 @@
             position: fixed;
             top: 0;
             right: 0;
-            transform: translateX(100%); /* Replaces animating 'right' for better GPU performance */
+            transform: translateX(100%);
+            /* Replaces animating 'right' for better GPU performance */
             width: 75%;
             /* Gives menu more breathing room */
-            height: 100dvh; /* Uses dynamic viewport height to prevent iOS/Android address bar cropping */
+            height: 100dvh;
+            /* Uses dynamic viewport height to prevent iOS/Android address bar cropping */
             background: var(--bg-color);
             flex-direction: column;
-            justify-content: flex-start; /* Safer for landscape scrolling */
+            justify-content: flex-start;
+            /* Safer for landscape scrolling */
             align-items: flex-start;
-            padding: 100px 12% 40px 12%; /* Clear the header space and allow scrolling */
+            padding: 100px 12% 40px 12%;
+            /* Clear the header space and allow scrolling */
             /* Pulls content slightly away from screen edge */
             gap: 25px;
             /* Tighter, more elegant spacing */
-            overflow-y: auto; /* Allow scrolling if screen is too short */
+            overflow-y: auto;
+            /* Allow scrolling if screen is too short */
             transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
             box-shadow: -10px 0 30px rgba(0, 0, 0, 0.05);
             will-change: transform;
@@ -1342,22 +1359,26 @@
        COMPREHENSIVE MOBILE OPTIMIZATIONS (Smartphones)
     */
     @media (max-width: 768px) {
+
         /* Expand tap targets for mobile nav links */
         .nav-links a {
             padding: 12px 0;
             width: 100%;
         }
+
         /* Make CTA buttons full width for easy thumb tapping */
         .cta-button {
             display: block;
             width: 100%;
             text-align: center;
         }
+
         /* Adjust the mobile menu hamburger to have a better touch area */
         .mobile-menu-btn {
             padding: 8px;
             margin-right: -8px;
         }
+
         /* Better modal fit for small screens */
         .popup-card {
             padding: 40px 25px;
@@ -1365,20 +1386,32 @@
     }
 
     @media (max-width: 480px) {
+
         /* Ultra-small screens (iPhone SE, older Androids) */
-        nav { padding: 15px 5%; }
-        
-        /* Restores a 90px top padding window to safely clear the logo area */
-        .nav-links { 
-            width: 100%; 
-            padding: 90px 8% 40px 8%; 
+        nav {
+            padding: 15px 5%;
         }
-        
+
+        /* Restores a 90px top padding window to safely clear the logo area */
+        .nav-links {
+            width: 100%;
+            padding: 90px 8% 40px 8%;
+        }
+
         /* Scale down oversized typography for tiny screens */
-        .hero h1 { font-size: clamp(2rem, 12vw, 2.8rem); }
-        .story-section h2 { font-size: 1.35rem; }
-        .process-section h2, .testimonials h2 { font-size: 2rem; }
-        
+        .hero h1 {
+            font-size: clamp(2rem, 12vw, 2.8rem);
+        }
+
+        .story-section h2 {
+            font-size: 1.35rem;
+        }
+
+        .process-section h2,
+        .testimonials h2 {
+            font-size: 2rem;
+        }
+
         /* Reduce excessive vertical space taken by images */
         .gallery-item:nth-child(1),
         .gallery-item:nth-child(2),
@@ -1386,12 +1419,24 @@
         .roaster-image {
             height: 280px;
         }
-        
+
         /* Tighter padding to maximize screen real estate */
-        .story-section, .roaster-section, .process-section, 
-        .testimonials, .gallery, .cta-section {
+        .story-section,
+        .roaster-section,
+        .process-section,
+        .testimonials,
+        .gallery,
+        .cta-section {
             padding: 60px 5%;
         }
-        .menu-hero, .visit-hero { padding: 110px 5% 30px 5%; }
-        .visit-layout, .menu-board { padding: 0 5% 80px 5%; }
+
+        .menu-hero,
+        .visit-hero {
+            padding: 110px 5% 30px 5%;
+        }
+
+        .visit-layout,
+        .menu-board {
+            padding: 0 5% 80px 5%;
+        }
     }

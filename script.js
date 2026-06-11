@@ -15,27 +15,28 @@ const ring = document.getElementById('cursor-ring');
 
 let mouseX = 0, mouseY = 0;
 let ringX = 0, ringY = 0;
+let dotScale = 1;
+let ringScale = 1;
 let isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
 
 document.addEventListener('mousemove', (e) => {
-  if (isTouchDevice) return; // Prevent unnecessary variable updates on mobile
+  if (isTouchDevice) return; 
   mouseX = e.clientX;
   mouseY = e.clientY;
 });
 
 function animateCursor() {
-  if (isTouchDevice) return; // Completely halt the loop on mobile to save battery and CPU
+  if (isTouchDevice) return; 
 
-  ringX += (mouseX - ringX) * 0.2;
-  ringY += (mouseY - ringY) * 0.2;
+  ringX += (mouseX - ringX) * 0.18;
+  ringY += (mouseY - ringY) * 0.18;
 
+  // USE TRANSLATE3D: Offloads calculation to GPU
   if (dot) {
-    dot.style.left = mouseX + 'px';
-    dot.style.top = mouseY + 'px';
+    dot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) scale(${dotScale})`;
   }
   if (ring) {
-    ring.style.left = ringX + 'px';
-    ring.style.top = ringY + 'px';
+    ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) scale(${ringScale})`;
   }
 
   requestAnimationFrame(animateCursor);
@@ -49,13 +50,25 @@ const interactives = document.querySelectorAll('.interactive, a');
 interactives.forEach(el => {
   el.addEventListener('mouseenter', () => {
     if (isTouchDevice) return;
-    if (ring) ring.classList.add('active');
-    if (dot) dot.style.transform = 'translate(-50%, -50%) scale(0.5)';
+    dotScale = 0.5;
+    ringScale = 1.4;
+    if (ring) {
+      ring.style.backgroundColor = document.documentElement.classList.contains('dark-mode') 
+        ? 'rgba(243, 241, 236, 0.1)' 
+        : 'rgba(44, 38, 33, 0.05)';
+      ring.style.borderColor = 'transparent';
+    }
   });
   el.addEventListener('mouseleave', () => {
     if (isTouchDevice) return;
-    if (ring) ring.classList.remove('active');
-    if (dot) dot.style.transform = 'translate(-50%, -50%) scale(1)';
+    dotScale = 1;
+    ringScale = 1;
+    if (ring) {
+      ring.style.backgroundColor = 'transparent';
+      ring.style.borderColor = document.documentElement.classList.contains('dark-mode')
+        ? 'rgba(243, 241, 236, 0.4)'
+        : 'rgba(44, 38, 33, 0.4)';
+    }
   });
 });
 const reveals = document.querySelectorAll('.reveal');
