@@ -157,9 +157,9 @@ function initDynamicInteractions() {
 // Boot up interactions on initial load
 initDynamicInteractions();
 
-/* 
+/* ==========================================================================
    SEAMLESS PAGE ROUTER (View Transitions API)
-*/
+   ========================================================================== */
 document.addEventListener('click', async (e) => {
   const link = e.target.closest('a');
   
