@@ -476,6 +476,28 @@
         border-radius: 4px;
     }
 
+    /* PROCEDURAL STEAM LAYER */
+    #steam-canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1; /* Places it above the image */
+        pointer-events: none; /* Ensures the mouse ignores the canvas and still clicks the page */
+        mix-blend-mode: screen; /* Blends the white particles softly into the dark image */
+    }
+
+    /* Elevate the text so it stays above the steam */
+    .hero-text {
+        position: absolute;
+        bottom: 10%;
+        left: 8%;
+        color: white;
+        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        z-index: 2; /* Bumps text above the canvas layer */
+    }
+
     .hero-image-container img {
         width: 100%;
         height: 100%;
