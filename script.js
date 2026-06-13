@@ -208,6 +208,7 @@ async function updateDOM(targetPath) {
     
     if (newMain && currentMain) {
       currentMain.innerHTML = newMain.innerHTML;
+      currentMain.className = newMain.className;
     }
 
     // Update document title and active nav underlines

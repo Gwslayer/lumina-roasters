@@ -97,12 +97,13 @@
         </div>
     </nav>
 
+    <main>
     <header class="visit-hero">
         <h1>Join Us</h1>
         <p>Reserve a table for slow mornings and intentional moments.</p>
     </header>
 
-    <main class="visit-layout">
+    <div class="visit-layout">
 
         <aside class="visit-info">
             <h2>The Roastery</h2>
@@ -175,10 +176,7 @@
                 <button type="submit" class="interactive cta-button submit-btn">Confirm Reservation</button>
             </form>
         </section>
-
-    </main>
-
-    <script type="module" src="./script.js"></script>
+    </div>
 
     <div id="reservation-popup" class="popup-overlay" aria-hidden="true">
         <div class="popup-card">
@@ -193,6 +191,9 @@
             <button id="close-popup" class="interactive cta-button popup-close-btn" aria-label="Close Confirmation Window">Close</button>
         </div>
     </div>
+    </main>
+
+    <script type="module" src="./script.js"></script>
 </body>
 
 </html>
