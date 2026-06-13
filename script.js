@@ -1,3 +1,4 @@
+import { initTheme } from './theme.js';
 import menuData from './menu.json';
 
 // Add a class to indicate that JavaScript is active
@@ -130,8 +131,11 @@ function initDynamicInteractions() {
     });
   }
 
-  // Ensure cursor works for elements already on the page
+// Ensure cursor works for elements already on the page
   attachCursorEvents();
+  
+  // Initialize the Dark Mode toggle for the current page
+  initTheme(); 
 
   /*
      (The rest of your existing initDynamicInteractions code goes here...
@@ -351,21 +355,3 @@ if (mobileToggle && navLinks) {
   });
 }
 
-// THEME TOGGLE LOGIC
-const themeToggle = document.getElementById('theme-toggle');
-const html = document.documentElement;
-
-if (themeToggle) {
-  themeToggle.addEventListener('click', () => {
-    html.classList.toggle('dark-mode');
-    try {
-      if (html.classList.contains('dark-mode')) {
-        localStorage.setItem('lumina-theme', 'dark');
-      } else {
-        localStorage.setItem('lumina-theme', 'light');
-      }
-    } catch (e) {
-      console.warn("Could not save theme.", e);
-    }
-  });
-}
