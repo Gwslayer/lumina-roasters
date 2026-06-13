@@ -1,3 +1,5 @@
+import menuUrl from './menu.json?url';
+
 // Add a class to indicate that JavaScript is active
 document.documentElement.classList.add('js-enabled');
 
@@ -59,7 +61,7 @@ function initDynamicInteractions() {
   
   // Only fetch if we are on the menu page and the grid is empty
   if (menuGrid && menuGrid.children.length === 0) {
-    fetch('./menu.json')
+    fetch(menuUrl)
       .then(response => response.json())
       .then(data => {
         // Loop through the JSON data and build HTML for each coffee
