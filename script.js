@@ -1,4 +1,4 @@
-import menuUrl from './menu.json?url';
+import menuData from './menu.json';
 
 // Add a class to indicate that JavaScript is active
 document.documentElement.classList.add('js-enabled');
@@ -61,48 +61,42 @@ function initDynamicInteractions() {
   
   // Only fetch if we are on the menu page and the grid is empty
   if (menuGrid && menuGrid.children.length === 0) {
-    fetch(menuUrl)
-      .then(response => response.json())
-      .then(data => {
-        // Loop through the JSON data and build HTML for each coffee
-        data.forEach((coffee, index) => {
-          const delay = index * 0.1; // Staggers the fade-in animation
-          
-          const htmlTemplate = `
-            <div class="menu-item interactive reveal" style="transition-delay: ${delay}s">
-                <div class="menu-image">
-                    <img src="${coffee.image}" alt="${coffee.name}" loading="lazy" width="600" height="400">
-                </div>
-                <div class="menu-details">
-                    <div class="menu-header">
-                        <span class="item-name">${coffee.name}</span>
-                        <span class="item-price">${coffee.price}</span>
-                    </div>
-                    <p class="item-desc">${coffee.description}</p>
-                </div>
+    // Loop through the imported JSON data and build HTML for each coffee
+    menuData.forEach((coffee, index) => {
+      const delay = index * 0.1; // Staggers the fade-in animation
+      
+      const htmlTemplate = `
+        <div class="menu-item interactive reveal" style="transition-delay: ${delay}s">
+            <div class="menu-image">
+                <img src="${coffee.image}" alt="${coffee.name}" loading="lazy" width="600" height="400">
             </div>
-          `;
-          // Inject the newly built HTML into the page
-          menuGrid.insertAdjacentHTML('beforeend', htmlTemplate);
-        });
+            <div class="menu-details">
+                <div class="menu-header">
+                    <span class="item-name">${coffee.name}</span>
+                    <span class="item-price">${coffee.price}</span>
+                </div>
+                <p class="item-desc">${coffee.description}</p>
+            </div>
+        </div>
+      `;
+      // Inject the newly built HTML into the page
+      menuGrid.insertAdjacentHTML('beforeend', htmlTemplate);
+    });
 
-        // CRITICAL: Now that new HTML exists, re-attach the custom cursor to it!
-        attachCursorEvents();
-        
-        // Re-attach scroll reveals to the new items
-        const newReveals = document.querySelectorAll('.reveal');
-        const revealOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
-        const revealOnScroll = new IntersectionObserver(function (entries, observer) {
-          entries.forEach(entry => {
-            if (!entry.isIntersecting) return;
-            entry.target.classList.add('active');
-            observer.unobserve(entry.target);
-          });
-        }, revealOptions);
-        newReveals.forEach(reveal => revealOnScroll.observe(reveal));
-
-      })
-      .catch(error => console.error('Error fetching menu data:', error));
+    // CRITICAL: Now that new HTML exists, re-attach the custom cursor to it!
+    attachCursorEvents();
+    
+    // Re-attach scroll reveals to the new items
+    const newReveals = document.querySelectorAll('.reveal');
+    const revealOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
+    const revealOnScroll = new IntersectionObserver(function (entries, observer) {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('active');
+        observer.unobserve(entry.target);
+      });
+    }, revealOptions);
+    newReveals.forEach(reveal => revealOnScroll.observe(reveal));
   }
 
   // --- Helper Function to re-attach Cursor Hover States ---
