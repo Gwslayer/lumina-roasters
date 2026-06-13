@@ -20,13 +20,13 @@ let ringScale = 1;
 let isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
 
 document.addEventListener('mousemove', (e) => {
-  if (isTouchDevice) return; 
+  if (isTouchDevice) return;
   mouseX = e.clientX;
   mouseY = e.clientY;
 });
 
 function animateCursor() {
-  if (isTouchDevice) return; 
+  if (isTouchDevice) return;
 
   ringX += (mouseX - ringX) * 0.18;
   ringY += (mouseY - ringY) * 0.18;
@@ -59,8 +59,8 @@ function initDynamicInteractions() {
       dotScale = 0.5;
       ringScale = 1.4;
       if (ring) {
-        ring.style.backgroundColor = document.documentElement.classList.contains('dark-mode') 
-          ? 'rgba(243, 241, 236, 0.1)' 
+        ring.style.backgroundColor = document.documentElement.classList.contains('dark-mode')
+          ? 'rgba(243, 241, 236, 0.1)'
           : 'rgba(44, 38, 33, 0.05)';
         ring.style.borderColor = 'transparent';
       }
@@ -100,7 +100,7 @@ function initDynamicInteractions() {
       e.preventDefault();
       const submitBtn = reservationForm.querySelector('.submit-btn');
       const originalText = submitBtn.innerHTML;
-      
+
       submitBtn.innerHTML = 'Securing Table...';
       submitBtn.disabled = true;
 
@@ -112,23 +112,23 @@ function initDynamicInteractions() {
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify(formObject)
       })
-      .then(async (res) => {
-        if (res.status === 200) {
-          popupOverlay.classList.add('active');
-          popupOverlay.setAttribute('aria-hidden', 'false');
-          reservationForm.reset();
-        } else {
-          alert("Something went wrong. Please check fields and resubmit.");
-        }
-      })
-      .catch((err) => {
-        console.error("Pipeline error:", err);
-        alert("A system network error occurred. Please test your internet link.");
-      })
-      .finally(() => {
-        submitBtn.innerHTML = originalText;
-        submitBtn.disabled = false;
-      });
+        .then(async (res) => {
+          if (res.status === 200) {
+            popupOverlay.classList.add('active');
+            popupOverlay.setAttribute('aria-hidden', 'false');
+            reservationForm.reset();
+          } else {
+            alert("Something went wrong. Please check fields and resubmit.");
+          }
+        })
+        .catch((err) => {
+          console.error("Pipeline error:", err);
+          alert("A system network error occurred. Please test your internet link.");
+        })
+        .finally(() => {
+          submitBtn.innerHTML = originalText;
+          submitBtn.disabled = false;
+        });
     });
 
     if (closePopupBtn) {
@@ -150,7 +150,7 @@ function initDynamicInteractions() {
         popupOverlay.classList.remove('active');
         popupOverlay.setAttribute('aria-hidden', 'true');
       }
-    }, { once: true }); 
+    }, { once: true });
   }
 }
 
@@ -162,11 +162,11 @@ initDynamicInteractions();
    ========================================================================== */
 document.addEventListener('click', async (e) => {
   const link = e.target.closest('a');
-  
+
   // Only intercept internal standard links
   if (!link || link.target === '_blank') return;
   const href = link.getAttribute('href');
-  
+
   // Skip external links, hashes, or the exact page we are already on
   if (!href || href.startsWith('http') || href.startsWith('#') || href === window.location.pathname.split('/').pop()) return;
 
@@ -187,7 +187,7 @@ async function updateDOM(href) {
     // Fetch the new HTML file silently
     const response = await fetch(href);
     const html = await response.text();
-    
+
     // Parse it into a virtual DOM
     const parser = new DOMParser();
     const doc = parser.parseFromString(html, 'text/html');
@@ -195,7 +195,7 @@ async function updateDOM(href) {
     // Extract the <main> block from the new page
     const newMain = doc.querySelector('main');
     const currentMain = document.querySelector('main');
-    
+
     // Swap the content seamlessly
     if (newMain && currentMain) {
       currentMain.innerHTML = newMain.innerHTML;
