@@ -105,6 +105,9 @@ export function initSteam() {
 
   // 4. The 60FPS Render Loop
   function animate() {
+    // MEMORY LEAK FIX: If the router deleted the canvas from the page, kill this loop!
+    if (!document.body.contains(canvas)) return;
+
     // Clear the previous frame
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
