@@ -1,0 +1,44 @@
+[
+  {
+    "id": "espresso",
+    "name": "Double Espresso",
+    "price": "₹180",
+    "description": "Our signature house blend. Pulled short and restricted for maximum sweetness and heavy crema.",
+    "image": "https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "id": "flatwhite",
+    "name": "Flat White",
+    "price": "₹220",
+    "description": "Silky microfoam poured over a double ristretto. The perfect balance of rich coffee and sweet milk.",
+    "image": "https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "id": "cortado",
+    "name": "Cortado",
+    "price": "₹200",
+    "description": "Equal parts espresso and lightly textured milk. For those who want to taste the roast profile.",
+    "image": "https://images.unsplash.com/photo-1485808191679-5f86510681a2?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "id": "pour-over",
+    "name": "Ethiopia Yirgacheffe",
+    "price": "₹280",
+    "description": "V60 Pour Over. Delicate floral notes, bright acidity, with a finish of bergamot and jasmine.",
+    "image": "https://images.unsplash.com/photo-1498603536246-15572faa67a6?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "id": "malabar",
+    "name": "Monsooned Malabar",
+    "price": "₹250",
+    "description": "French Press. A bold, earthy local favorite with ultra-low acidity.",
+    "image": "https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "id": "coldbrew",
+    "name": "18-Hour Cold Brew",
+    "price": "₹240",
+    "description": "Steeped overnight for a deeply smooth, chocolatey, and refreshing finish.",
+    "image": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=600&q=80"
+  }
+]

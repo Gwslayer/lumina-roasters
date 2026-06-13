@@ -34,7 +34,7 @@
             if (localStorage.getItem('lumina-theme') === 'dark') {
                 document.documentElement.classList.add('dark-mode');
             }
-        } catch (e) {}
+        } catch (e) { }
     </script>
 </head>
 
@@ -98,113 +98,20 @@
     </nav>
 
     <main>
-    <header class="menu-hero">
-        <h1>Our Menu</h1>
-        <p>Thoughtfully sourced. Carefully poured.</p>
-    </header>
+            <header class="menu-hero">
+                <h1>Our Menu</h1>
+                <p>Thoughtfully sourced. Carefully poured.</p>
+            </header>
 
-    <div class="menu-board">
+            <div class="menu-board">
+                <section class="menu-category reveal">
+                    <h2>The Roaster's Selection</h2>
 
-        <section class="menu-category">
-            <h2>Espresso Bar</h2>
-            <div class="menu-grid">
+                    <div class="menu-grid" id="dynamic-menu-grid">
+                    </div>
 
-                <div class="menu-item interactive">
-                    <div class="menu-image">
-                        <img src="https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?auto=format&fit=crop&w=600&q=80&fm=webp"
-                            alt="Double Espresso" loading="lazy" width="600" height="400">
-                    </div>
-                    <div class="menu-details">
-                        <div class="menu-header">
-                            <span class="item-name">Double Espresso</span>
-                            <span class="item-price">₹150</span>
-                        </div>
-                        <p class="item-desc">Our signature house blend, pulled short and sweet with thick crema.</p>
-                    </div>
-                </div>
-
-                <div class="menu-item interactive">
-                    <div class="menu-image">
-                        <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=600&q=80&fm=webp"
-                            alt="Flat White" loading="lazy" width="600" height="400">
-                    </div>
-                    <div class="menu-details">
-                        <div class="menu-header">
-                            <span class="item-name">Flat White</span>
-                            <span class="item-price">₹220</span>
-                        </div>
-                        <p class="item-desc">Silky micro-foamed milk poured perfectly over a double ristretto shot.</p>
-                    </div>
-                </div>
-
-                <div class="menu-item interactive">
-                    <div class="menu-image">
-                        <img src="https://images.unsplash.com/photo-1485808191679-5f86510681a2?auto=format&fit=crop&w=600&q=80&fm=webp"
-                            alt="Cortado" loading="lazy" width="600" height="400">
-                    </div>
-                    <div class="menu-details">
-                        <div class="menu-header">
-                            <span class="item-name">Cortado</span>
-                            <span class="item-price">₹180</span>
-                        </div>
-                        <p class="item-desc">Equal parts bold espresso and gently steamed milk. A balanced classic.</p>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <section class="menu-category">
-            <h2>Filter & Cold</h2>
-            <div class="menu-grid">
-
-                <div class="menu-item interactive">
-                    <div class="menu-image">
-                        <img src="https://images.unsplash.com/photo-1498603536246-15572faa67a6?auto=format&fit=crop&w=600&q=80&fm=webp"
-                            alt="Ethiopia Yirgacheffe" loading="lazy" width="600" height="400">
-                    </div>
-                    <div class="menu-details">
-                        <div class="menu-header">
-                            <span class="item-name">Ethiopia Yirgacheffe</span>
-                            <span class="item-price">₹280</span>
-                        </div>
-                        <p class="item-desc">V60 Pour Over. Light roast with bright notes of jasmine and blueberry.</p>
-                    </div>
-                </div>
-
-                <div class="menu-item interactive">
-                    <div class="menu-image">
-                        <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=600&q=80&fm=webp"
-                            alt="Monsooned Malabar" loading="lazy" width="600" height="400">
-                    </div>
-                    <div class="menu-details">
-                        <div class="menu-header">
-                            <span class="item-name">Monsooned Malabar</span>
-                            <span class="item-price">₹250</span>
-                        </div>
-                        <p class="item-desc">French Press. A bold, earthy local favorite with ultra-low acidity.</p>
-                    </div>
-                </div>
-
-                <div class="menu-item interactive">
-                    <div class="menu-image">
-                        <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=600&q=80&fm=webp"
-                            alt="Signature Cold Brew" loading="lazy" width="600" height="400">
-                    </div>
-                    <div class="menu-details">
-                        <div class="menu-header">
-                            <span class="item-name">18-Hour Cold Brew</span>
-                            <span class="item-price">₹240</span>
-                        </div>
-                        <p class="item-desc">Steeped overnight for a deeply smooth, chocolatey, and refreshing finish.
-                        </p>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-    </div>
+                </section>
+            </div>    
     </main>
 
     <script type="module" src="./script.js"></script>
