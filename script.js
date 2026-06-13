@@ -46,10 +46,10 @@ if (!isTouchDevice) {
   animateCursor();
 }
 
-/* ==========================================================================
+/*
    MASTER INITIALIZATION FUNCTION
    Groups dynamic events so they can be re-triggered after page routing
-   ========================================================================== */
+*/
 function initDynamicInteractions() {
   // 1. RE-ATTACH CURSOR HOVER STATES
   const interactives = document.querySelectorAll('.interactive, a');
@@ -157,46 +157,55 @@ function initDynamicInteractions() {
 // Boot up interactions on initial load
 initDynamicInteractions();
 
-/* ==========================================================================
+/* 
    SEAMLESS PAGE ROUTER (View Transitions API)
-   ========================================================================== */
+*/
 document.addEventListener('click', async (e) => {
   const link = e.target.closest('a');
-
+  
   // Only intercept internal standard links
   if (!link || link.target === '_blank') return;
-  const href = link.getAttribute('href');
 
-  // Skip external links, hashes, or the exact page we are already on
-  if (!href || href.startsWith('http') || href.startsWith('#') || href === window.location.pathname.split('/').pop()) return;
+  const linkUrl = new URL(link.href);
+  const currentUrl = new URL(window.location.href);
 
-  e.preventDefault(); // Stop browser from flashing white and reloading
+  // 1. Ignore external links
+  if (linkUrl.origin !== currentUrl.origin) return;
 
-  // Check if browser supports modern transitions
+  // 2. If it's an anchor link to a section on the EXACT SAME page, let the browser scroll naturally
+  if (linkUrl.pathname === currentUrl.pathname && linkUrl.hash) {
+    return; 
+  }
+
+  // 3. For all other internal routing, intercept the click and prevent white flashes
+  e.preventDefault(); 
+  const targetPath = linkUrl.pathname + linkUrl.search + linkUrl.hash;
+
   if (!document.startViewTransition) {
-    await updateDOM(href);
+    await updateDOM(targetPath);
   } else {
     document.startViewTransition(async () => {
-      await updateDOM(href);
+      await updateDOM(targetPath);
     });
   }
 });
 
-async function updateDOM(href) {
+async function updateDOM(targetPath) {
   try {
-    // Fetch the new HTML file silently
-    const response = await fetch(href);
-    const html = await response.text();
+    const targetUrl = new URL(targetPath, window.location.origin);
 
-    // Parse it into a virtual DOM
+    // Fetch the new HTML file (we ignore the hash for the network fetch)
+    const response = await fetch(targetUrl.pathname + targetUrl.search);
+    const html = await response.text();
+    
+    // Parse virtual DOM
     const parser = new DOMParser();
     const doc = parser.parseFromString(html, 'text/html');
 
-    // Extract the <main> block from the new page
+    // Extract and swap the <main> block
     const newMain = doc.querySelector('main');
     const currentMain = document.querySelector('main');
-
-    // Swap the content seamlessly
+    
     if (newMain && currentMain) {
       currentMain.innerHTML = newMain.innerHTML;
     }
@@ -205,29 +214,40 @@ async function updateDOM(href) {
     document.title = doc.title;
     document.querySelectorAll('.nav-links a').forEach(navLink => {
       navLink.classList.remove('active-page');
-      if (navLink.getAttribute('href') === href) {
+      if (navLink.pathname === targetUrl.pathname) {
         navLink.classList.add('active-page');
       }
     });
 
-    // Push the new URL to the browser history (so back button works)
-    history.pushState(null, '', href);
+    // Push URL to browser history
+    history.pushState(null, '', targetPath);
 
-    // Scroll instantly to top
-    window.scrollTo(0, 0);
+    // SCROLL INTELLIGENCE: Check if the link had a #hash attached
+    if (targetUrl.hash) {
+      // Find the specific section and glide to it
+      const targetSection = document.querySelector(targetUrl.hash);
+      if (targetSection) {
+        targetSection.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        window.scrollTo(0, 0);
+      }
+    } else {
+      // Standard page load: scroll to the very top
+      window.scrollTo(0, 0);
+    }
 
     // CRITICAL: Re-run our master function to attach cursor to the new HTML!
     initDynamicInteractions();
 
   } catch (error) {
     console.error('Router failed. Falling back to hard navigation.', error);
-    window.location.href = href;
+    window.location.href = targetPath;
   }
 }
 
 // Handle the browser's Native Back/Forward buttons
 window.addEventListener('popstate', () => {
-  const path = window.location.pathname.split('/').pop() || 'index.html';
+  const path = window.location.pathname + window.location.search + window.location.hash;
   if (document.startViewTransition) {
     document.startViewTransition(() => updateDOM(path));
   } else {
@@ -235,9 +255,9 @@ window.addEventListener('popstate', () => {
   }
 });
 
-/* ==========================================================================
+/* 
    MOBILE HAMBURGER MENU LOGIC
-   ========================================================================== */
+*/
 const mobileToggle = document.getElementById('mobile-toggle');
 const navLinks = document.querySelector('.nav-links');
 const ICONS = {
