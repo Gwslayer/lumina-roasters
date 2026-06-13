@@ -1,5 +1,6 @@
 import { initTheme } from './theme.js';
-import menuData from './menu.json';
+import { initCursor, attachCursorEvents } from './cursor.js';
+import { initMenu } from './menu.js';
 
 // Add a class to indicate that JavaScript is active
 document.documentElement.classList.add('js-enabled');
@@ -13,41 +14,22 @@ try {
   console.warn("Could not read theme preference from localStorage.", e);
 }
 
-const dot = document.getElementById('cursor-dot');
-const ring = document.getElementById('cursor-ring');
+// Initialize global cursor movement loop
+initCursor();
 
-let mouseX = 0, mouseY = 0;
-let ringX = 0, ringY = 0;
-let dotScale = 1;
-let ringScale = 1;
-let isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
+// Initialize the Dark Mode toggle once globally
+initTheme();
 
-document.addEventListener('mousemove', (e) => {
-  if (isTouchDevice) return;
-  mouseX = e.clientX;
-  mouseY = e.clientY;
+// Global Escape key handler for popups
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    const popup = document.getElementById('reservation-popup');
+    if (popup && popup.classList.contains('active')) {
+      popup.classList.remove('active');
+      popup.setAttribute('aria-hidden', 'true');
+    }
+  }
 });
-
-function animateCursor() {
-  if (isTouchDevice) return;
-
-  ringX += (mouseX - ringX) * 0.18;
-  ringY += (mouseY - ringY) * 0.18;
-
-  // USE TRANSLATE3D: Offloads calculation to GPU
-  if (dot) {
-    dot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) scale(${dotScale})`;
-  }
-  if (ring) {
-    ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) scale(${ringScale})`;
-  }
-
-  requestAnimationFrame(animateCursor);
-}
-
-if (!isTouchDevice) {
-  animateCursor();
-}
 
 /*
    MASTER INITIALIZATION FUNCTION
@@ -55,90 +37,14 @@ if (!isTouchDevice) {
 */
 function initDynamicInteractions() {
   
-  /* 
-     DYNAMIC API: MENU DATA INJECTION
-     */
-  const menuGrid = document.getElementById('dynamic-menu-grid');
-  
-  // Only fetch if we are on the menu page and the grid is empty
-  if (menuGrid && menuGrid.children.length === 0) {
-    // Loop through the imported JSON data and build HTML for each coffee
-    menuData.forEach((coffee, index) => {
-      const delay = index * 0.1; // Staggers the fade-in animation
-      
-      const htmlTemplate = `
-        <div class="menu-item interactive reveal" style="transition-delay: ${delay}s">
-            <div class="menu-image">
-                <img src="${coffee.image}" alt="${coffee.name}" loading="lazy" width="600" height="400">
-            </div>
-            <div class="menu-details">
-                <div class="menu-header">
-                    <span class="item-name">${coffee.name}</span>
-                    <span class="item-price">${coffee.price}</span>
-                </div>
-                <p class="item-desc">${coffee.description}</p>
-            </div>
-        </div>
-      `;
-      // Inject the newly built HTML into the page
-      menuGrid.insertAdjacentHTML('beforeend', htmlTemplate);
-    });
-
-    // CRITICAL: Now that new HTML exists, re-attach the custom cursor to it!
-    attachCursorEvents();
-    
-    // Re-attach scroll reveals to the new items
-    const newReveals = document.querySelectorAll('.reveal');
-    const revealOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
-    const revealOnScroll = new IntersectionObserver(function (entries, observer) {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('active');
-        observer.unobserve(entry.target);
-      });
-    }, revealOptions);
-    newReveals.forEach(reveal => revealOnScroll.observe(reveal));
-  }
-
-  // --- Helper Function to re-attach Cursor Hover States ---
-  function attachCursorEvents() {
-    document.querySelectorAll('.interactive, a').forEach(el => {
-      if (el.dataset.cursorAttached) return;
-      el.dataset.cursorAttached = 'true';
-
-      el.addEventListener('mouseenter', () => {
-        if (isTouchDevice) return;
-        dotScale = 0.5;
-        ringScale = 1.4;
-        if (ring) {
-          ring.style.backgroundColor = document.documentElement.classList.contains('dark-mode') 
-            ? 'rgba(243, 241, 236, 0.1)' 
-            : 'rgba(44, 38, 33, 0.05)';
-          ring.style.borderColor = 'transparent';
-        }
-      });
-      el.addEventListener('mouseleave', () => {
-        if (isTouchDevice) return;
-        dotScale = 1;
-        ringScale = 1;
-        if (ring) {
-          ring.style.backgroundColor = 'transparent';
-          ring.style.borderColor = document.documentElement.classList.contains('dark-mode')
-            ? 'rgba(243, 241, 236, 0.4)'
-            : 'rgba(44, 38, 33, 0.4)';
-        }
-      });
-    });
-  }
+  // 1. INJECT MENU DATA
+  initMenu();
 
 // Ensure cursor works for elements already on the page
   attachCursorEvents();
   
-  // Initialize the Dark Mode toggle for the current page
-  initTheme(); 
-
   /*
-     (The rest of your existing initDynamicInteractions code goes here...
+     (The rest of the existing initDynamicInteractions code goes here...
       like the scroll reveals and Web3Forms pipeline)
   */
   
@@ -209,13 +115,6 @@ function initDynamicInteractions() {
         popupOverlay.setAttribute('aria-hidden', 'true');
       }
     });
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && popupOverlay.classList.contains('active')) {
-        popupOverlay.classList.remove('active');
-        popupOverlay.setAttribute('aria-hidden', 'true');
-      }
-    }, { once: true });
   }
 }
 
@@ -354,4 +253,3 @@ if (mobileToggle && navLinks) {
     });
   });
 }
-
