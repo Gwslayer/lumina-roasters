@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Lumina Roasters | Slow Coffee, Intentional Moments</title>
+  <meta name="description"
+    content="Premium, small-batch coffee roastery in Ahmedabad. Ethically sourced, intentionally poured. Visit us for slow mornings and perfect espresso.">
+  <meta name="keywords"
+    content="coffee roastery, specialty coffee Ahmedabad, Lumina Roasters, cafe Vastrapur, best espresso, artisanal coffee">
+  <meta name="author" content="Lumina Roasters">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://lumina-roasters.vercel.app/">
+  <meta property="og:title" content="Lumina Roasters | Slow Coffee, Intentional Moments">
+  <meta property="og:description"
+    content="Premium, small-batch coffee roastery in Ahmedabad. Ethically sourced, intentionally poured.">
+  <meta property="og:image"
+    content="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&w=1200&h=630&q=80">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Lumina Roasters | Slow Coffee, Intentional Moments">
+  <meta name="twitter:description"
+    content="Premium, small-batch coffee roastery in Ahmedabad. Ethically sourced, intentionally poured.">
+  <meta name="twitter:image"
+    content="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&w=1200&h=630&q=80">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+    rel="stylesheet">
+  <link rel="preload" as="image"
+    href="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&w=1920&q=80&fm=webp">
+
+
+  <script>
+    try {
+      if (localStorage.getItem('lumina-theme') === 'dark') {
+        document.documentElement.classList.add('dark-mode');
+      }
+    } catch (e) { }
+  </script>
+
+  <script type="module" crossorigin src="/assets/script-Bpb-wofD.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/script-Dx6ldl7K.css">
+<link rel="manifest" href="/manifest.webmanifest"></head>
+
+<body>
+
+  <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
+
+  <nav>
+    <div class="logo">
+      <a href="index.html" class="interactive" style="text-decoration: none; color: inherit;">Lumina.</a>
+    </div>
+
+    <button class="mobile-menu-btn interactive" id="mobile-toggle" aria-label="Open Menu">
+      <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none"
+        stroke-linecap="round">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+
+    <div class="nav-links">
+
+      <a href="index.html" class="interactive mobile-only-link" aria-label="Go to home page">Home</a>
+      <a href="menu.html" class="interactive" aria-label="View our menu">Menu</a>
+      <a href="index.html#process" class="interactive" aria-label="Learn about our process">Our Process</a>
+      <a href="visit.html" class="interactive" aria-label="Visit our location">Visit Us</a>
+
+      <div class="mobile-theme-row">
+        <span class="mobile-theme-label">Theme</span>
+
+        <button id="theme-toggle" class="theme-switch interactive" aria-label="Toggle Dark Mode">
+          <span class="switch-thumb"></span>
+          <span class="track-icon icon-sun">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y1="3"></line>
+              <line x1="12" y1="21" x2="12" y1="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y1="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y1="19.78"></line>
+              <line x1="1" y1="12" x2="3" y1="12"></line>
+              <line x1="21" y1="12" x2="23" y1="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y1="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="5.64" y1="19.78"></line>
+            </svg>
+          </span>
+          <span class="track-icon icon-moon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            <span class="icon-stars" aria-hidden="true">
+              <span class="star-particle star-1"></span>
+              <span class="star-particle star-2"></span>
+              <span class="star-particle star-3"></span>
+            </span>
+          </span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="hero-image-container interactive">
+        <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&w=1920&q=80&fm=webp"
+          alt="Pouring espresso with care and intention" fetchpriority="high" width="1920" height="1280">
+
+        <canvas id="steam-canvas"></canvas>
+
+        <div class="hero-text reveal active">
+          <h1>Slow mornings.</h1>
+          <p style="font-size: 1.1rem; font-family: 'Inter', sans-serif;">Crafted with intention, poured with care.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="story-section">
+      <h2 class="reveal">We believe coffee is more than a routine. It is a moment of pause in a fast-moving world. Our
+        beans are ethically sourced, gently roasted, and prepared with an obsessive attention to detail.</h2>
+    </section>
+
+    <section class="gallery">
+      <div class="gallery-item interactive reveal">
+        <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=800&q=80&fm=webp"
+          alt="Warm cafe interior with natural light" loading="lazy" width="800" height="1200">
+      </div>
+      <div class="gallery-item interactive reveal" style="transition-delay: 0.1s;">
+        <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=800&q=80&fm=webp"
+          alt="Latte art showing our craftsmanship" loading="lazy" width="800" height="1200">
+      </div>
+      <div class="gallery-item interactive reveal" style="transition-delay: 0.2s;">
+        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80&fm=webp"
+          alt="Freshly roasted coffee beans" loading="lazy" width="800" height="1200">
+      </div>
+    </section>
+
+    <section class="roaster-section reveal">
+      <div class="roaster-bio">
+        <h3>Meet the roaster.</h3>
+        <p>I'm Maya, and Lumina started in a small garage in 2019. What began as a personal obsession with sourcing
+          single-origin beans has grown into a community of people who believe coffee should be intentional.</p>
+        <p>Every batch is roasted by hand. I spend hours dialing in the temperature, listening to the crack, watching
+          the
+          color shift. There's no algorithm for this—just decades of craft passed down, and a relentless pursuit of
+          perfection.</p>
+        <p>When you visit, you're not just getting coffee. You're getting a moment with someone who genuinely cares
+          about
+          your morning.</p>
+      </div>
+      <div class="roaster-image interactive">
+        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=600&q=80&fm=webp"
+          alt="Maya, founder of Lumina Roasters, at the roasting machine" loading="lazy" width="600" height="900">
+      </div>
+    </section>
+
+    <section class="process-section" id="process">
+      <h2 class="reveal">How we do it.</h2>
+      <div class="process-steps">
+        <div class="step reveal" style="transition-delay: 0.1s;">
+          <div class="step-number">1</div>
+          <h3>Source</h3>
+          <p>We partner directly with farms in Ethiopia, Colombia, and Kenya. No middlemen. Just conversations with
+            growers who share our values.</p>
+        </div>
+        <div class="step reveal" style="transition-delay: 0.2s;">
+          <div class="step-number">2</div>
+          <h3>Roast</h3>
+          <p>Hand-roasted in small batches. We listen to the bean, adjust the heat, and pull at the exact moment it
+            reaches peak potential.</p>
+        </div>
+        <div class="step reveal" style="transition-delay: 0.3s;">
+          <div class="step-number">3</div>
+          <h3>Pour</h3>
+          <p>Whether espresso, pour-over, or cappuccino—each cup is made with intention. We take time. We don't rush.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonials">
+      <h2 class="reveal">What people say.</h2>
+      <div class="testimonial-grid">
+        <div class="testimonial-card reveal" style="transition-delay: 0.1s;">
+          <p>"I've had coffee in 15 countries. This is the only place where I feel like someone actually cares about my
+            morning."</p>
+          <div class="testimonial-author">— Sarah M., Regular</div>
+        </div>
+        <div class="testimonial-card reveal" style="transition-delay: 0.2s;">
+          <p>"The espresso here changed how I think about coffee. It's not just caffeine. It's an experience."</p>
+          <div class="testimonial-author">— James K., First-time Visitor</div>
+        </div>
+        <div class="testimonial-card reveal" style="transition-delay: 0.3s;">
+          <p>"Maya remembers my order. She remembers my name. In a world of algorithms, that means everything."</p>
+          <div class="testimonial-author">— Alex R., Local</div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="cta-section reveal" id="visit">
+      <h2>Ready to pause?</h2>
+      <a href="visit.html" class="cta-button interactive" aria-label="Reserve your table now">Reserve Now</a>
+      <div class="footer-text">
+        <p>Open Monday–Friday, 7am–6pm<br>
+          Saturday–Sunday, 8am–5pm</p>
+        <p style="margin-top: 20px; font-size: 0.85rem; color: var(--text-muted);">Lumina Roasters © <span
+            id="current-year">2026</span> — Ethically
+          sourced, locally roasted</p>
+      </div>
+    </footer>
+  </main>
+
+</body>
+
+</html>

@@ -11,6 +11,9 @@ import { registerSW } from 'virtual:pwa-register';
 // Add a class to indicate that JavaScript is active
 document.documentElement.classList.add('js-enabled');
 
+// Register the Service Worker for PWA offline capabilities
+registerSW({ immediate: true });
+
 // Initialize Global Features (Only runs once)
 initCursor();
 initTheme();

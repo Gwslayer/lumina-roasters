@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Our Menu | Lumina Roasters</title>
+    <meta name="description"
+        content="Explore our intentionally crafted menu. From single-origin pour-overs to perfectly pulled espresso and 18-hour cold brew.">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lumina-roasters.vercel.app/menu.html">
+    <meta property="og:title" content="Our Menu | Lumina Roasters">
+    <meta property="og:description"
+        content="Explore our intentionally crafted menu. From single-origin pour-overs to perfectly pulled espresso.">
+    <meta property="og:image"
+        content="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=1200&h=630&q=80">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Our Menu | Lumina Roasters">
+    <meta name="twitter:description"
+        content="Explore our intentionally crafted menu. From single-origin pour-overs to perfectly pulled espresso.">
+    <meta name="twitter:image"
+        content="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=1200&h=630&q=80">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet">
+
+    <script>
+        try {
+            if (localStorage.getItem('lumina-theme') === 'dark') {
+                document.documentElement.classList.add('dark-mode');
+            }
+        } catch (e) { }
+    </script>
+  <script type="module" crossorigin src="/assets/script-Bpb-wofD.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/script-Dx6ldl7K.css">
+<link rel="manifest" href="/manifest.webmanifest"></head>
+
+<body>
+
+    <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
+
+    <nav>
+        <div class="logo">
+            <a href="index.html" class="interactive" style="text-decoration: none; color: inherit;">Lumina.</a>
+        </div>
+
+        <button class="mobile-menu-btn interactive" id="mobile-toggle" aria-label="Open Menu">
+            <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none"
+                stroke-linecap="round">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
+
+        <div class="nav-links">
+
+            <a href="index.html" class="interactive mobile-only-link" aria-label="Go to home page">Home</a>
+            <a href="menu.html" class="interactive" aria-label="View our menu">Menu</a>
+            <a href="index.html#process" class="interactive" aria-label="Learn about our process">Our Process</a>
+            <a href="visit.html" class="interactive" aria-label="Visit our location">Visit Us</a>
+
+            <div class="mobile-theme-row">
+                <span class="mobile-theme-label">Theme</span>
+
+                <button id="theme-toggle" class="theme-switch interactive" aria-label="Toggle Dark Mode">
+                    <span class="switch-thumb"></span>
+                    <span class="track-icon icon-sun">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y1="3"></line>
+                            <line x1="12" y1="21" x2="12" y1="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y1="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y1="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y1="12"></line>
+                            <line x1="21" y1="12" x2="23" y1="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y1="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="5.64" y1="19.78"></line>
+                        </svg>
+                    </span>
+                    <span class="track-icon icon-moon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                        <span class="icon-stars" aria-hidden="true">
+                            <span class="star-particle star-1"></span>
+                            <span class="star-particle star-2"></span>
+                            <span class="star-particle star-3"></span>
+                        </span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+            <header class="menu-hero">
+                <h1>Our Menu</h1>
+                <p>Thoughtfully sourced. Carefully poured.</p>
+            </header>
+
+            <div class="menu-board">
+                <section class="menu-category reveal">
+                    <h2>The Roaster's Selection</h2>
+
+                    <div class="menu-grid" id="dynamic-menu-grid">
+                    </div>
+
+                </section>
+            </div>    
+    </main>
+
+</body>
+
+</html>
