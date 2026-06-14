@@ -11,8 +11,13 @@ export function initSteam() {
   // 1. Map the canvas strictly to the Hero Image dimensions
   function resize() {
     const rect = canvas.parentElement.getBoundingClientRect();
-    canvas.width = rect.width;
-    canvas.height = rect.height;
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+    // Ensure the canvas fits the container visually
+    canvas.style.width = `${rect.width}px`;
+    canvas.style.height = `${rect.height}px`;
+    ctx.scale(dpr, dpr);
   }
   window.addEventListener('resize', resize);
   resize();
