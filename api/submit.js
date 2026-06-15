@@ -8,9 +8,17 @@ export default async function handler(req, res) {
 
   // Wrap the entire native HTTP request in a Promise so Vercel doesn't close the connection early
   return new Promise((resolve) => {
+    // Ensure the body is treated as a JavaScript object
+    let body = req.body || {};
+    if (typeof body === 'string') {
+      try {
+        body = JSON.parse(body);
+      } catch (e) { }
+    }
+
     // 1. Build the payload securely
     const payload = JSON.stringify({
-      ...req.body,
+      ...body,
       access_key: process.env.WEB3FORMS_ACCESS_KEY
     });
 

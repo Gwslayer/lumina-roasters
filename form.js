@@ -23,12 +23,17 @@ export function initForm() {
       body: JSON.stringify(formObject)
     })
       .then(async (res) => {
+        const responseData = await res.json().catch(() => null);
+        console.log("Server Response:", res.status, responseData);
+
         if (res.status === 200) {
           popupOverlay.classList.add('active');
           popupOverlay.setAttribute('aria-hidden', 'false');
           reservationForm.reset();
+        } else if (res.status === 404) {
+          alert("Error 404: /api/submit not found. If testing locally, ensure you are using 'vercel dev', not Live Server.");
         } else {
-          alert("Something went wrong. Please check fields and resubmit.");
+          alert(`Something went wrong: ${responseData?.message || responseData?.error || 'Please check fields and resubmit.'}`);
         }
       })
       .catch((err) => {
