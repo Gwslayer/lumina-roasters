@@ -17,7 +17,7 @@ export function initForm() {
     const formData = new FormData(reservationForm);
     const formObject = Object.fromEntries(formData);
 
-    fetch('/api/submit', {
+    fetch('https://api.web3forms.com/submit', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify(formObject)
@@ -30,8 +30,6 @@ export function initForm() {
           popupOverlay.classList.add('active');
           popupOverlay.setAttribute('aria-hidden', 'false');
           reservationForm.reset();
-        } else if (res.status === 404) {
-          alert("Error 404: /api/submit not found. If testing locally, ensure you are using 'vercel dev', not Live Server.");
         } else {
           alert(`Something went wrong: ${responseData?.message || responseData?.error || 'Please check fields and resubmit.'}`);
         }
