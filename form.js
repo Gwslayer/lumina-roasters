@@ -17,7 +17,7 @@ export function initForm() {
     const formData = new FormData(reservationForm);
     const formObject = Object.fromEntries(formData);
 
-    fetch('https://api.web3forms.com/submit', {
+    fetch('/api/submit', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify(formObject)

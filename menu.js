@@ -5,30 +5,57 @@ export function initMenu() {
   const menuGrid = document.getElementById('dynamic-menu-grid');
   
   if (menuGrid && menuGrid.children.length === 0) {
+    
+    // 1. SECURE DOM CONSTRUCTION
     menuData.forEach((coffee, index) => {
       const delay = index * 0.1;
       
-      const htmlTemplate = `
-        <div class="menu-item interactive reveal" style="transition-delay: ${delay}s">
-            <div class="menu-image">
-                <img src="${coffee.image}" alt="${coffee.name}" loading="lazy" width="600" height="400">
-            </div>
-            <div class="menu-details">
-                <div class="menu-header">
-                    <span class="item-name">${coffee.name}</span>
-                    <span class="item-price">${coffee.price}</span>
-                </div>
-                <p class="item-desc">${coffee.description}</p>
-            </div>
-        </div>
-      `;
-      menuGrid.insertAdjacentHTML('beforeend', htmlTemplate);
+      const itemDiv = document.createElement('div');
+      itemDiv.className = 'menu-item interactive reveal';
+      itemDiv.style.transitionDelay = `${delay}s`;
+
+      const imgDiv = document.createElement('div');
+      imgDiv.className = 'menu-image';
+      const img = document.createElement('img');
+      img.src = coffee.image; 
+      img.alt = coffee.name;
+      img.loading = 'lazy';
+      img.width = 600;
+      img.height = 400;
+      imgDiv.appendChild(img);
+
+      const detailsDiv = document.createElement('div');
+      detailsDiv.className = 'menu-details';
+
+      const headerDiv = document.createElement('div');
+      headerDiv.className = 'menu-header';
+      
+      const nameSpan = document.createElement('span');
+      nameSpan.className = 'item-name';
+      nameSpan.textContent = coffee.name; 
+
+      const priceSpan = document.createElement('span');
+      priceSpan.className = 'item-price';
+      priceSpan.textContent = coffee.price;
+
+      headerDiv.appendChild(nameSpan);
+      headerDiv.appendChild(priceSpan);
+
+      const descP = document.createElement('p');
+      descP.className = 'item-desc';
+      descP.textContent = coffee.description;
+
+      detailsDiv.appendChild(headerDiv);
+      detailsDiv.appendChild(descP);
+      itemDiv.appendChild(imgDiv);
+      itemDiv.appendChild(detailsDiv);
+
+      menuGrid.appendChild(itemDiv);
     });
 
-    // Re-attach cursor to the newly injected HTML
+    // 2. ANIMATION & CURSOR LOGIC
     attachCursorEvents();
     
-    // Setup scroll reveals for the new items
     const newReveals = document.querySelectorAll('.reveal');
     const revealOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
     const revealOnScroll = new IntersectionObserver(function (entries, observer) {

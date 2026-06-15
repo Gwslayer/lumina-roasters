@@ -1,7 +1,7 @@
 export function initRouter(onPageChange) {
   document.addEventListener('click', async (e) => {
     const link = e.target.closest('a');
-    
+
     // Only intercept internal standard links
     if (!link || link.target === '_blank') return;
 
@@ -11,7 +11,7 @@ export function initRouter(onPageChange) {
     if (linkUrl.origin !== currentUrl.origin) return;
     if (linkUrl.pathname === currentUrl.pathname && linkUrl.hash) return;
 
-    e.preventDefault(); 
+    e.preventDefault();
     const targetPath = linkUrl.pathname + linkUrl.search + linkUrl.hash;
 
     if (!document.startViewTransition) {
@@ -39,15 +39,15 @@ async function updateDOM(targetPath, onPageChange) {
 
     const response = await fetch(targetUrl.pathname + targetUrl.search);
     const html = await response.text();
-    
+
     const parser = new DOMParser();
     const doc = parser.parseFromString(html, 'text/html');
 
     const newMain = doc.querySelector('main');
     const currentMain = document.querySelector('main');
-    
+
     if (newMain && currentMain) {
-      currentMain.innerHTML = newMain.innerHTML;
+      currentMain.replaceChildren(...newMain.childNodes);
       currentMain.className = newMain.className;
     }
 
