@@ -10,8 +10,8 @@ export default async function handler(req, res) {
   return new Promise((resolve) => {
     // 1. Build the payload securely
     const payload = JSON.stringify({
-      access_key: process.env.WEB3FORMS_ACCESS_KEY,
-      ...req.body
+      ...req.body,
+      access_key: process.env.WEB3FORMS_ACCESS_KEY
     });
 
     // 2. Configure the low-level network routing
