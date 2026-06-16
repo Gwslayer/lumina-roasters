@@ -36,6 +36,11 @@ document.addEventListener('keydown', (e) => {
 */
 function initDynamicInteractions() {
   
+  const yearSpan = document.getElementById('current-year');
+  if (yearSpan) {
+    yearSpan.textContent = new Date().getFullYear();
+  }
+  
   initMenu();
   initSteam();
   attachCursorEvents();

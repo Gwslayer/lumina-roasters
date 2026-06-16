@@ -23,17 +23,19 @@ export function initSteam() {
   resize();
 
   // 2. Track cursor position specifically over the image
-  canvas.parentElement.addEventListener('mousemove', (e) => {
+  const handleMouseMove = (e) => {
     if (isTouchDevice) return;
     const rect = canvas.getBoundingClientRect();
     mouse.x = e.clientX - rect.left;
     mouse.y = e.clientY - rect.top;
-  });
+  };
+  canvas.parentElement.addEventListener('mousemove', handleMouseMove);
 
-  canvas.parentElement.addEventListener('mouseleave', () => {
+  const handleMouseLeave = () => {
     mouse.x = null;
     mouse.y = null;
-  });
+  };
+  canvas.parentElement.addEventListener('mouseleave', handleMouseLeave);
 
   // 3. Define the Physics for a single Steam Particle
   class Particle {
@@ -111,7 +113,12 @@ export function initSteam() {
   // 4. The 60FPS Render Loop
   function animate() {
     // MEMORY LEAK FIX: If the router deleted the canvas from the page, kill this loop!
-    if (!document.body.contains(canvas)) return;
+    if (!document.body.contains(canvas)) {
+      window.removeEventListener('resize', resize);
+      canvas.parentElement?.removeEventListener('mousemove', handleMouseMove);
+      canvas.parentElement?.removeEventListener('mouseleave', handleMouseLeave);
+      return;
+    }
 
     // Clear the previous frame
     ctx.clearRect(0, 0, canvas.width, canvas.height);

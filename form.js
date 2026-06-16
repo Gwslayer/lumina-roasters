@@ -31,15 +31,21 @@ export function initForm() {
           popupOverlay.setAttribute('aria-hidden', 'false');
           reservationForm.reset();
         } else {
-          alert(`Something went wrong: ${responseData?.message || responseData?.error || 'Please check fields and resubmit.'}`);
+          const errorMsg = responseData?.message || responseData?.error || 'Error. Please resubmit.';
+          submitBtn.innerHTML = errorMsg;
+          setTimeout(() => { submitBtn.innerHTML = originalText; }, 4000);
         }
       })
       .catch((err) => {
         console.error("Pipeline error:", err);
-        alert("A system network error occurred. Please test your internet link.");
+        submitBtn.innerHTML = "Network Error. Try again.";
+        setTimeout(() => { submitBtn.innerHTML = originalText; }, 4000);
       })
       .finally(() => {
-        submitBtn.innerHTML = originalText;
+        // Only reset immediately if successful, otherwise leave error message temporarily
+        if (popupOverlay.classList.contains('active')) {
+          submitBtn.innerHTML = originalText;
+        }
         submitBtn.disabled = false;
       });
   });
