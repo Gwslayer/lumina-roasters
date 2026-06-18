@@ -3,6 +3,11 @@ export function initSteam() {
   // If we aren't on the home page, the canvas won't exist. Safely abort.
   if (!canvas) return; 
 
+  // BATTERY & MOTION OPTIMIZATION: Abort 60FPS loop if reduced motion is preferred
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    return;
+  }
+
   const ctx = canvas.getContext('2d');
   let particles = [];
   let mouse = { x: null, y: null };

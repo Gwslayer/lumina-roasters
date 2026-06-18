@@ -1471,3 +1471,26 @@
         animation-duration: 0.6s;
         animation-timing-function: cubic-bezier(0.25, 1, 0.5, 1);
     }
+
+    /* 
+       BATTERY & MOTION OPTIMIZATIONS (Phase 3)
+       Automatically detects low-power mode or reduced motion preference
+    */
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+            scroll-behavior: auto !important;
+        }
+        
+        .cursor-dot, .cursor-ring, #steam-canvas {
+            display: none !important;
+        }
+        
+        .js-enabled body, .js-enabled a, .js-enabled .interactive {
+            cursor: auto !important;
+        }
+    }

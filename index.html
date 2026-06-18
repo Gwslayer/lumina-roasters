@@ -61,7 +61,7 @@
       <a href="index.html" class="interactive" style="text-decoration: none; color: inherit;">Lumina.</a>
     </div>
 
-    <button class="mobile-menu-btn interactive" id="mobile-toggle" aria-label="Open Menu">
+    <button class="mobile-menu-btn interactive" id="mobile-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open Menu">
       <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none"
         stroke-linecap="round">
         <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -70,7 +70,7 @@
       </svg>
     </button>
 
-    <div class="nav-links">
+    <div class="nav-links" id="mobile-nav">
 
       <a href="index.html" class="interactive mobile-only-link" aria-label="Go to home page">Home</a>
       <a href="menu.html" class="interactive" aria-label="View our menu">Menu</a>

@@ -54,7 +54,7 @@
             <a href="index.html" class="interactive" style="text-decoration: none; color: inherit;">Lumina.</a>
         </div>
 
-        <button class="mobile-menu-btn interactive" id="mobile-toggle" aria-label="Open Menu">
+    <button class="mobile-menu-btn interactive" id="mobile-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open Menu">
             <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none"
                 stroke-linecap="round">
                 <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -63,7 +63,7 @@
             </svg>
         </button>
 
-        <div class="nav-links">
+    <div class="nav-links" id="mobile-nav">
 
             <a href="index.html" class="interactive mobile-only-link" aria-label="Go to home page">Home</a>
             <a href="menu.html" class="interactive" aria-label="View our menu">Menu</a>
@@ -106,18 +106,18 @@
     <main>
             <header class="menu-hero">
                 <h1>Our Menu</h1>
-                <p>Thoughtfully sourced. Carefully poured.</p>
+            <p>Thoughtfully sourced. Carefully poured.</p>
             </header>
 
-            <div class="menu-board">
-                <section class="menu-category reveal">
-                    <h2>The Roaster's Selection</h2>
+        <div class="menu-board">
+            <section class="menu-category reveal">
+                <h2>The Roaster's Selection</h2>
 
-                    <div class="menu-grid" id="dynamic-menu-grid">
-                    </div>
+                <div class="menu-grid" id="dynamic-menu-grid">
+                </div>
 
-                </section>
-            </div>    
+            </section>
+        </div>    
     </main>
 
     <script type="module" src="./script.js"></script>

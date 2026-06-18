@@ -1,0 +1,83 @@
+[
+  {
+    "category": "Pizzas",
+    "items": [
+      {
+        "id": "margherita",
+        "name": "Classic Margherita",
+        "price": "₹299",
+        "description": "Fresh tomatoes, mozzarella, and basil on a hand-tossed crust.",
+        "image": "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        "id": "farmhouse",
+        "name": "Farmhouse Special",
+        "price": "₹349",
+        "description": "Loaded with crisp capsicum, succulent mushrooms, fresh tomatoes, and onions.",
+        "image": "https://images.unsplash.com/photo-1590947132387-155cc02f3212?auto=format&fit=crop&w=600&q=80"
+      }
+    ]
+  },
+  {
+    "category": "Burgers",
+    "items": [
+      {
+        "id": "veggie-burger",
+        "name": "Crispy Veggie Burger",
+        "price": "₹149",
+        "description": "Spiced vegetable patty with fresh lettuce, tomato, and our signature sauce.",
+        "image": "https://images.unsplash.com/photo-1594212722883-8a03fcc94902?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        "id": "paneer-burger",
+        "name": "Spicy Paneer Crunch",
+        "price": "₹179",
+        "description": "Crispy paneer patty topped with jalapeños and spicy mayo.",
+        "image": "https://images.unsplash.com/photo-1606755962773-d324e0a13086?auto=format&fit=crop&w=600&q=80"
+      }
+    ]
+  },
+  {
+    "category": "Chinese",
+    "items": [
+      {
+        "id": "hakka-noodles",
+        "name": "Veg Hakka Noodles",
+        "price": "₹199",
+        "description": "Classic wok-tossed noodles with shredded vegetables and soy sauce.",
+        "image": "https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        "id": "manchurian-dry",
+        "name": "Dry Veg Manchurian",
+        "price": "₹220",
+        "description": "Crispy vegetable dumplings tossed in a spicy, tangy garlic sauce.",
+        "image": "https://images.unsplash.com/photo-1541529086526-db283c563270?auto=format&fit=crop&w=600&q=80"
+      }
+    ]
+  },
+  {
+    "category": "Pav Bhaji & Street Food",
+    "items": [
+      {
+        "id": "bombay-pav-bhaji",
+        "name": "Mumbai Pav Bhaji",
+        "price": "₹160",
+        "description": "Spicy mashed vegetable curry served with butter-toasted soft buns.",
+        "image": "https://images.unsplash.com/photo-1606491956689-2ea866880c84?auto=format&fit=crop&w=600&q=80"
+      }
+    ]
+  },
+  {
+    "category": "Mocktails",
+    "items": [
+      {
+        "id": "virgin-mojito",
+        "name": "Virgin Mint Mojito",
+        "price": "₹129",
+        "description": "Refreshing blend of fresh mint, lime, and crushed ice.",
+        "image": "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=600&q=80"
+      }
+    ]
+  }
+]

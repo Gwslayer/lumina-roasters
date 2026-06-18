@@ -20,7 +20,9 @@ export function initMobileMenu() {
 
   mobileToggle.addEventListener('click', () => {
     navLinks.classList.toggle('active');
-    mobileToggle.innerHTML = navLinks.classList.contains('active') ? ICONS.close : ICONS.menu;
+    const isActive = navLinks.classList.contains('active');
+    mobileToggle.innerHTML = isActive ? ICONS.close : ICONS.menu;
+    mobileToggle.setAttribute('aria-expanded', isActive ? 'true' : 'false');
   });
 
   const links = navLinks.querySelectorAll('a');
@@ -28,6 +30,7 @@ export function initMobileMenu() {
     link.addEventListener('click', () => {
       navLinks.classList.remove('active');
       mobileToggle.innerHTML = ICONS.menu;
+      mobileToggle.setAttribute('aria-expanded', 'false');
     });
   });
 }
