@@ -48,18 +48,32 @@
         position: relative;
         width: 68px;
         height: 34px;
-        background: #EAE8E3;
+        background: #EAE8E3; /* Base background for light mode */
         border-radius: 34px;
         border: 1px solid rgba(44, 38, 33, 0.08);
         display: flex;
         align-items: center;
-        justify-content: space-between;
         padding: 0 8px;
         margin-left: 20px;
         box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06);
-        transition: background 0.5s ease, border-color 0.5s ease;
+        /* The container itself no longer animates its background */
+        transition: border-color 0.6s ease;
         overflow: hidden;
-        /* Concept: Ensures symbols slide out of bounds */
+    }
+
+    /* FIX: The gradient is moved to a pseudo-element to prevent edge bleeding on border-radius. */
+    .theme-switch::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to right, #EAE8E3 50%, #1e293b 50%);
+        background-size: 200% 100%;
+        background-position: 0% 0%;
+        transition: background-position 0.6s ease;
+        /* z-index: 0 is default, placing it behind all other content. */
     }
 
     .switch-thumb {
@@ -93,15 +107,15 @@
     .icon-sun {
         left: 10px;
         opacity: 1;
-        transform: rotate(0deg) scale(1);
-        /* Starting position */
+        /* UPGRADE: Start centered vertically */
+        transform: rotate(0deg) scale(1) translateY(0);
     }
 
     .icon-moon {
         right: 10px;
         opacity: 0.3;
-        transform: rotate(-20deg) scale(0.8);
-        /* Starting position */
+        /* UPGRADE: Start slightly elevated and smaller */
+        transform: rotate(-20deg) scale(0.8) translateY(5px);
     }
 
     /* Complex Crossfading internal motion on hover for a mechanical feel */
@@ -116,9 +130,12 @@
 
     /* Dark Mode Switch States */
     html.dark-mode .theme-switch {
-        background: #1e293b;
         border-color: rgba(243, 241, 236, 0.05);
         box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    html.dark-mode .theme-switch::before {
+        background-position: 100% 0%; /* Slide the gradient over */
     }
 
     /* Slide the thumb and make it glow like dawn */
@@ -131,14 +148,14 @@
     /* Concept: Symbols crossfade AND move when slid */
     html.dark-mode .icon-sun {
         opacity: 0;
-        transform: rotate(-180deg) scale(0.5);
-        /* Concept: Spin and fade away */
+        /* UPGRADE: Sun "sets" by moving down as it fades */
+        transform: rotate(-180deg) scale(0.5) translateY(10px);
     }
 
     html.dark-mode .icon-moon {
         opacity: 1;
-        transform: rotate(0deg) scale(1);
-        /* Concept: Lock into bright position */
+        /* UPGRADE: Moon "rises" into its final position */
+        transform: rotate(0deg) scale(1) translateY(0);
         color: #ffffff;
     }
 
@@ -162,7 +179,8 @@
         background: rgba(255, 255, 255, 0.7);
         border-radius: 50%;
         opacity: 0;
-        animation: starTwinkle 3s infinite alternate ease-in-out;
+        /* UPGRADE: Add subtle drift to the star twinkle animation */
+        animation: starTwinkle 4s infinite ease-in-out;
     }
 
     .star-1 {
@@ -170,7 +188,8 @@
         height: 1.5px;
         top: 15%;
         right: 15%;
-        animation-delay: 0.1s;
+        /* Staggered delays for a more natural effect */
+        animation-delay: 0s;
     }
 
     .star-2 {
@@ -178,7 +197,7 @@
         height: 1.2px;
         bottom: 20%;
         left: 30%;
-        animation-delay: 0.5s;
+        animation-delay: 1.5s;
     }
 
     .star-3 {
@@ -186,16 +205,20 @@
         height: 1px;
         top: 40%;
         right: 40%;
-        animation-delay: 0.9s;
+        animation-delay: 2.8s;
     }
 
     @keyframes starTwinkle {
-        from {
+        0% {
             opacity: 0;
+            transform: translateY(4px) scale(0.7);
         }
-
-        to {
+        50% {
             opacity: 0.9;
+        }
+        100% {
+            opacity: 0;
+            transform: translateY(-4px) scale(1);
         }
     }
 
@@ -495,6 +518,7 @@
         left: 8%;
         color: white;
         text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        will-change: transform; /* Performance hint for parallax scroll */
         z-index: 2; /* Bumps text above the canvas layer */
     }
 
@@ -998,34 +1022,67 @@
     }
 
     .form-group {
-        margin-bottom: 25px;
+        position: relative;
+        margin-bottom: 35px;
+    /* FIX: Background and border are moved to the parent group */
+    background: #F9F8F6;
+    border: 1px solid rgba(44, 38, 33, 0.1);
+    border-radius: 4px;
+    transition: all 0.3s ease;
     }
 
     .form-group label {
-        display: block;
-        font-size: 0.85rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        margin-bottom: 10px;
-        color: var(--text-main);
-        font-weight: 600;
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        font-size: 1rem;
+        color: var(--text-muted);
+        pointer-events: none;
+        transition: all 0.3s ease;
+    /* FIX: Hide the label initially. It will appear and float up on focus/input. */
+    opacity: 0;
+    /* FIX: Ensure label is below the input text but above the group background */
+    z-index: 1;
     }
 
     .form-control {
         width: 100%;
         padding: 15px;
-        background: #F9F8F6;
-        border: 1px solid rgba(44, 38, 33, 0.1);
-        border-radius: 4px;
+    /* FIX: Input is now transparent to see the parent's background */
+    background: transparent;
+    border: none;
         font-family: 'Inter', sans-serif;
         font-size: 1rem;
         color: var(--text-main);
-        transition: all 0.3s ease;
         outline: none;
+    /* FIX: Give the input a higher stacking context than the label */
+    position: relative;
+    z-index: 2;
+    }
+
+    /* FIX: Hide placeholder on focus to prevent it from clashing with the floating label. */
+    .form-control:focus::placeholder {
+        color: transparent;
+    }
+
+    /* The floating label magic */
+    .form-control:focus + label,
+    .form-control:not(:placeholder-shown) + label {
+        opacity: 1; /* Make label visible when it floats */
+        top: -10px;
+        left: 10px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--accent);
+        background: #ffffff; /* Cuts a hole in the input border */
+        padding: 0 5px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
     }
 
     /* Focus state for that premium interaction feel */
-    .form-control:focus {
+/* FIX: Use :focus-within on the group to style the container */
+.form-group:focus-within {
         border-color: var(--accent);
         background: #ffffff;
         box-shadow: 0 0 0 3px rgba(184, 138, 100, 0.1);
@@ -1050,16 +1107,21 @@
         box-shadow: none;
     }
 
-    html.dark-mode .form-control {
+    html.dark-mode .form-group {
         background: rgba(0, 0, 0, 0.2);
         border-color: rgba(255, 255, 255, 0.1);
-        color: var(--text-main);
     }
 
-    html.dark-mode .form-control:focus {
+    html.dark-mode .form-group:focus-within {
         border-color: var(--accent);
         background: rgba(0, 0, 0, 0.4);
         box-shadow: 0 0 0 3px rgba(212, 115, 36, 0.15);
+    }
+
+    html.dark-mode .form-control:focus + label,
+    html.dark-mode .form-control:not(:placeholder-shown) + label {
+        background: #1e293b; /* Match the dark popup background */
+        color: var(--accent);
     }
 
     /* 

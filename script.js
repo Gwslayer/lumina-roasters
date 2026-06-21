@@ -48,8 +48,55 @@ function initDynamicInteractions() {
   initForm();
 }
 
+function initHeroParallax() {
+  const heroText = document.querySelector('.hero-text');
+  if (!heroText) return;
+
+  // Run on load
+  const initialScroll = window.scrollY;
+  if (initialScroll < window.innerHeight) {
+    heroText.style.transform = `translateY(-${initialScroll * 0.2}px)`;
+  }
+
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    if (scrollY < window.innerHeight) {
+      // Move text up at 20% of the scroll speed for a subtle effect
+      heroText.style.transform = `translateY(-${scrollY * 0.2}px)`;
+    }
+  }, { passive: true }); // Performance optimization
+}
+
+function initCardTilt() {
+  const tiltElements = document.querySelectorAll('.testimonial-card, .menu-item');
+
+  tiltElements.forEach(el => {
+    el.addEventListener('mousemove', (e) => {
+      const rect = el.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      const { width, height } = rect;
+      const rotateX = (y / height - 0.5) * -12; // Max 6 deg tilt
+      const rotateY = (x / width - 0.5) * 12;  // Max 6 deg tilt
+
+      el.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+      el.style.transition = 'transform 0.1s ease-out';
+    });
+
+    el.addEventListener('mouseleave', () => {
+      el.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
+      el.style.transition = 'transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
+    });
+  });
+}
+
 // Boot up interactions on initial load
 initDynamicInteractions();
 
 // Boot up the router, passing our initializer to re-run on page transitions
 initRouter(initDynamicInteractions);
+
+// Initialize new interactions
+initCardTilt();
+initHeroParallax();
