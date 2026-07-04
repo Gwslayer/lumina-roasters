@@ -26,6 +26,9 @@
     <meta name="twitter:image"
         content="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=1200&h=630&q=80">
 
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https: data:; connect-src 'self' https://api.web3forms.com; frame-src 'self' https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self' https://api.web3forms.com;">
+
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
         rel="stylesheet">
@@ -38,9 +41,6 @@
             }
         } catch (e) { }
     </script>
-
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6154771333408454"
-        crossorigin="anonymous"></script>
 
     <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -55,66 +55,54 @@
     <nav>
         <div class="logo">
             <a href="index.html" class="interactive" style="text-decoration: none; color: inherit;">Lumina.</a>
-            <a href="index.html" class="interactive logo-link">Lumina.</a>
         </div>
 
-        <button class="mobile-menu-btn interactive" id="mobile-toggle" aria-label="Open Menu">
-            <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" <button
-                class="mobile-menu-btn interactive" id="mobile-toggle" aria-expanded="false" aria-controls="mobile-nav"
-                aria-label="Open Menu">
-                <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none"
-                    aria-hidden="true" stroke-linecap="round">
-                    <line x1="3" y1="12" x2="21" y2="12"></line>
-                    <line x1="3" y1="6" x2="21" y2="6"></line>
-                    <line x1="3" y1="18" x2="21" y2="18"></line>
-                </svg>
+        <button class="mobile-menu-btn interactive" id="mobile-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open Menu">
+            <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"
+                aria-hidden="true">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
         </button>
 
-        <div class="nav-links">
-            <div class="nav-links" id="mobile-nav">
+        <div class="nav-links" id="mobile-nav">
 
-                <a href="/" class="interactive mobile-only-link" aria-label="Go to home page">Home</a>
-                <a href="/menu.html" class="interactive" aria-label="View our menu">Menu</a>
-                <a href="/visit.html" class="interactive" aria-label="Visit our location">Visit & Reserve</a>
-                <a href="/" class="interactive mobile-only-link">Home</a>
-                <a href="/menu.html" class="interactive">Menu</a>
-                <a href="/visit.html" class="interactive">Visit & Reserve</a>
+            <a href="/" class="interactive mobile-only-link" aria-label="Go to home page">Home</a>
+            <a href="/menu.html" class="interactive" aria-label="View our menu">Menu</a>
+            <a href="/visit.html" class="interactive" aria-label="Visit our location">Visit & Reserve</a>
 
-                <div class="mobile-theme-row">
-                    <span class="mobile-theme-label">Theme</span>
+            <div class="mobile-theme-row">
+                <span class="mobile-theme-label">Theme</span>
 
-                    <button id="theme-toggle" class="theme-switch interactive" aria-label="Toggle Dark Mode">
-                        <span class="switch-thumb"></span>
-                        <span class="track-icon icon-sun">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    aria-hidden="true">
-                                    <circle cx="12" cy="12" r="5"></circle>
-                                    <line x1="12" y1="1" x2="12" y1="3"></line>
-                                    <line x1="12" y1="21" x2="12" y1="23"></line>
-                                    <line x1="4.22" y1="4.22" x2="5.64" y1="5.64"></line>
-                                    <line x1="18.36" y1="18.36" x2="19.78" y1="19.78"></line>
-                                    <line x1="1" y1="12" x2="3" y1="12"></line>
-                                    <line x1="21" y1="12" x2="23" y1="12"></line>
-                                    <line x1="4.22" y1="19.78" x2="5.64" y1="18.36"></line>
-                                    <line x1="18.36" y1="5.64" x2="5.64" y1="19.78"></line>
-                                </svg>
+                <button id="theme-toggle" class="theme-switch interactive" aria-label="Toggle Dark Mode">
+                    <span class="switch-thumb"></span>
+                    <span class="track-icon icon-sun">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y1="3"></line>
+                            <line x1="12" y1="21" x2="12" y1="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y1="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y1="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y1="12"></line>
+                            <line x1="21" y1="12" x2="23" y1="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y1="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y1="4.22"></line>
+                        </svg>
+                    </span>
+                    <span class="track-icon icon-moon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                        <span class="icon-stars" aria-hidden="true">
+                            <span class="star-particle star-1"></span>
+                            <span class="star-particle star-2"></span>
+                            <span class="star-particle star-3"></span>
                         </span>
-                        <span class="track-icon icon-moon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    aria-hidden="true">
-                                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                                </svg>
-                                <span class="icon-stars" aria-hidden="true">
-                                    <span class="star-particle star-1"></span>
-                                    <span class="star-particle star-2"></span>
-                                    <span class="star-particle star-3"></span>
-                                </span>
-                        </span>
-                    </button>
-                </div>
+                    </span>
+                </button>
             </div>
+        </div>
     </nav>
 
     <main>
