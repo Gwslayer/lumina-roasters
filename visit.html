@@ -36,11 +36,15 @@
             if (localStorage.getItem('lumina-theme') === 'dark') {
                 document.documentElement.classList.add('dark-mode');
             }
-        } catch (e) {}
+        } catch (e) { }
     </script>
 
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6154771333408454"
-     crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 
 <body>
@@ -55,155 +59,162 @@
         </div>
 
         <button class="mobile-menu-btn interactive" id="mobile-toggle" aria-label="Open Menu">
-            <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none"
-        <button class="mobile-menu-btn interactive" id="mobile-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open Menu">
-            <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" aria-hidden="true"
-                stroke-linecap="round">
-                <line x1="3" y1="12" x2="21" y2="12"></line>
-                <line x1="3" y1="6" x2="21" y2="6"></line>
-                <line x1="3" y1="18" x2="21" y2="18"></line>
-            </svg>
+            <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" <button
+                class="mobile-menu-btn interactive" id="mobile-toggle" aria-expanded="false" aria-controls="mobile-nav"
+                aria-label="Open Menu">
+                <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none"
+                    aria-hidden="true" stroke-linecap="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
         </button>
 
         <div class="nav-links">
-        <div class="nav-links" id="mobile-nav">
+            <div class="nav-links" id="mobile-nav">
 
-            <a href="/" class="interactive mobile-only-link" aria-label="Go to home page">Home</a>
-            <a href="/menu.html" class="interactive" aria-label="View our menu">Menu</a>
-            <a href="/visit.html" class="interactive" aria-label="Visit our location">Visit & Reserve</a>
-            <a href="/" class="interactive mobile-only-link">Home</a>
-            <a href="/menu.html" class="interactive">Menu</a>
-            <a href="/visit.html" class="interactive">Visit & Reserve</a>
+                <a href="/" class="interactive mobile-only-link" aria-label="Go to home page">Home</a>
+                <a href="/menu.html" class="interactive" aria-label="View our menu">Menu</a>
+                <a href="/visit.html" class="interactive" aria-label="Visit our location">Visit & Reserve</a>
+                <a href="/" class="interactive mobile-only-link">Home</a>
+                <a href="/menu.html" class="interactive">Menu</a>
+                <a href="/visit.html" class="interactive">Visit & Reserve</a>
 
-            <div class="mobile-theme-row">
-                <span class="mobile-theme-label">Theme</span>
+                <div class="mobile-theme-row">
+                    <span class="mobile-theme-label">Theme</span>
 
-                <button id="theme-toggle" class="theme-switch interactive" aria-label="Toggle Dark Mode">
-                    <span class="switch-thumb"></span>
-                    <span class="track-icon icon-sun">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                            <circle cx="12" cy="12" r="5"></circle>
-                            <line x1="12" y1="1" x2="12" y1="3"></line>
-                            <line x1="12" y1="21" x2="12" y1="23"></line>
-                            <line x1="4.22" y1="4.22" x2="5.64" y1="5.64"></line>
-                            <line x1="18.36" y1="18.36" x2="19.78" y1="19.78"></line>
-                            <line x1="1" y1="12" x2="3" y1="12"></line>
-                            <line x1="21" y1="12" x2="23" y1="12"></line>
-                            <line x1="4.22" y1="19.78" x2="5.64" y1="18.36"></line>
-                            <line x1="18.36" y1="5.64" x2="5.64" y1="19.78"></line>
-                        </svg>
-                    </span>
-                    <span class="track-icon icon-moon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                        </svg>
-                        <span class="icon-stars" aria-hidden="true">
-                            <span class="star-particle star-1"></span>
-                            <span class="star-particle star-2"></span>
-                            <span class="star-particle star-3"></span>
+                    <button id="theme-toggle" class="theme-switch interactive" aria-label="Toggle Dark Mode">
+                        <span class="switch-thumb"></span>
+                        <span class="track-icon icon-sun">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    aria-hidden="true">
+                                    <circle cx="12" cy="12" r="5"></circle>
+                                    <line x1="12" y1="1" x2="12" y1="3"></line>
+                                    <line x1="12" y1="21" x2="12" y1="23"></line>
+                                    <line x1="4.22" y1="4.22" x2="5.64" y1="5.64"></line>
+                                    <line x1="18.36" y1="18.36" x2="19.78" y1="19.78"></line>
+                                    <line x1="1" y1="12" x2="3" y1="12"></line>
+                                    <line x1="21" y1="12" x2="23" y1="12"></line>
+                                    <line x1="4.22" y1="19.78" x2="5.64" y1="18.36"></line>
+                                    <line x1="18.36" y1="5.64" x2="5.64" y1="19.78"></line>
+                                </svg>
                         </span>
-                    </span>
-                </button>
+                        <span class="track-icon icon-moon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    aria-hidden="true">
+                                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                                </svg>
+                                <span class="icon-stars" aria-hidden="true">
+                                    <span class="star-particle star-1"></span>
+                                    <span class="star-particle star-2"></span>
+                                    <span class="star-particle star-3"></span>
+                                </span>
+                        </span>
+                    </button>
+                </div>
             </div>
-        </div>
     </nav>
 
     <main>
-    <header class="visit-hero">
-        <h1>Join Us</h1>
-        <p>Reserve a table for slow mornings and intentional moments.</p>
-    </header>
+        <header class="visit-hero">
+            <h1>Join Us</h1>
+            <p>Reserve a table for slow mornings and intentional moments.</p>
+        </header>
 
-    <div class="visit-layout">
+        <div class="visit-layout">
 
-        <aside class="visit-info">
-            <h2>The Roastery</h2>
-            <p>123 Bodakdev Road<br>Vastrapur, Ahmedabad 380015</p>
+            <aside class="visit-info">
+                <h2>The Roastery</h2>
+                <p>123 Bodakdev Road<br>Vastrapur, Ahmedabad 380015</p>
 
-            <div class="hours-block">
-                <h3>Hours</h3>
-                <p>Mon – Fri : 7:00 AM – 6:00 PM</p>
-                <p>Sat – Sun : 8:00 AM – 5:00 PM</p>
-            </div>
-
-            <div class="contact-block">
-                <h3>Contact</h3>
-                <p>hello@luminaroasters.in</p>
-                <p>+91 98765 43210</p>
-            </div>
-            <div class="map-container interactive">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.697915724479!2d72.527815!3d23.034861!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e84cb75324e15%3A0x8dd3ce3b45a0b02!2sVastrapur%2C%20Ahmedabad%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
-                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade" title="Lumina Roasters Location">
-                </iframe>
-            </div>
-        </aside>
-
-        <section class="visit-form-wrapper">
-            <form action="https://api.web3forms.com/submit" method="POST" class="reservation-form">
-
-            
-                <input type="hidden" name="access_key" value="b0d8b04d-236c-4785-8730-88f8ff1f9bc8">
-                <input type="hidden" name="subject" value="New Reservation at Lumina Roasters!">
-                <input type="hidden" name="from_name" value="Lumina Website">
-                <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="name">Full Name</label>
-                        <input type="text" id="name" name="Guest Name" class="interactive form-control"
-                            placeholder="Maya Patel" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="Email Address" class="interactive form-control"
-                            placeholder="maya@example.com" required>
-                    </div>
+                <div class="hours-block">
+                    <h3>Hours</h3>
+                    <p>Mon – Fri : 7:00 AM – 6:00 PM</p>
+                    <p>Sat – Sun : 8:00 AM – 5:00 PM</p>
                 </div>
 
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="date">Date</label>
-                        <input type="date" id="date" name="Reservation Date" class="interactive form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="guests">Guests</label>
-                        <select id="guests" name="Number of Guests" class="interactive form-control">
-                            <option value="1">1 Person</option>
-                            <option value="2" selected>2 People</option>
-                            <option value="3">3 People</option>
-                            <option value="4">4+ People</option>
-                        </select>
-                    </div>
+                <div class="contact-block">
+                    <h3>Contact</h3>
+                    <p>hello@luminaroasters.in</p>
+                    <p>+91 98765 43210</p>
                 </div>
-
-                <div class="form-group">
-                    <label for="message">Special Requests (Optional)</label>
-                    <textarea id="message" name="Special Requests" rows="3" class="interactive form-control"
-                        placeholder="Celebrating an anniversary, requesting a window seat..."></textarea>
+                <div class="map-container interactive">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.697915724479!2d72.527815!3d23.034861!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e84cb75324e15%3A0x8dd3ce3b45a0b02!2sVastrapur%2C%20Ahmedabad%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade" title="Lumina Roasters Location">
+                    </iframe>
                 </div>
+            </aside>
 
-                <button type="submit" class="interactive cta-button submit-btn">Confirm Reservation</button>
-            </form>
-        </section>
-    </div>
+            <section class="visit-form-wrapper">
+                <form action="https://api.web3forms.com/submit" method="POST" class="reservation-form">
 
-    <div id="reservation-popup" class="popup-overlay" aria-hidden="true">
-        <div class="popup-card">
-            <div class="popup-icon">
-                <svg viewBox="0 0 24 24" width="44" height="44" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                </svg>
-            </div>
-            <h2>Table Reserved.</h2>
-            <p>Thank you for pausing with us. Your reservation has been successfully logged, and we look forward to greeting you at the roastery.</p>
-            <button id="close-popup" class="interactive cta-button popup-close-btn" aria-label="Close Confirmation Window">Close</button>
+
+                    <input type="hidden" name="access_key" value="b0d8b04d-236c-4785-8730-88f8ff1f9bc8">
+                    <input type="hidden" name="subject" value="New Reservation at Lumina Roasters!">
+                    <input type="hidden" name="from_name" value="Lumina Website">
+                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="Guest Name" class="interactive form-control"
+                                placeholder="Maya Patel" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="Email Address" class="interactive form-control"
+                                placeholder="maya@example.com" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="date">Date</label>
+                            <input type="date" id="date" name="Reservation Date" class="interactive form-control"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="guests">Guests</label>
+                            <select id="guests" name="Number of Guests" class="interactive form-control">
+                                <option value="1">1 Person</option>
+                                <option value="2" selected>2 People</option>
+                                <option value="3">3 People</option>
+                                <option value="4">4+ People</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Special Requests (Optional)</label>
+                        <textarea id="message" name="Special Requests" rows="3" class="interactive form-control"
+                            placeholder="Celebrating an anniversary, requesting a window seat..."></textarea>
+                    </div>
+
+                    <button type="submit" class="interactive cta-button submit-btn">Confirm Reservation</button>
+                </form>
+            </section>
         </div>
-    </div>
+
+        <div id="reservation-popup" class="popup-overlay" aria-hidden="true">
+            <div class="popup-card">
+                <div class="popup-icon">
+                    <svg viewBox="0 0 24 24" width="44" height="44" stroke="currentColor" stroke-width="1.5" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                </div>
+                <h2>Table Reserved.</h2>
+                <p>Thank you for pausing with us. Your reservation has been successfully logged, and we look forward to
+                    greeting you at the roastery.</p>
+                <button id="close-popup" class="interactive cta-button popup-close-btn"
+                    aria-label="Close Confirmation Window">Close</button>
+            </div>
+        </div>
     </main>
 
     <script type="module" src="./script.js"></script>

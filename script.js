@@ -14,8 +14,7 @@ document.documentElement.classList.add('js-enabled');
 // Register the Service Worker for PWA offline capabilities
 registerSW({ immediate: true });
 
-// Initialize Global Features (Only runs once)
-initCursor();
+// Initialize Critical Global Features immediately
 initTheme();
 initMobileMenu();
 
@@ -35,7 +34,6 @@ document.addEventListener('keydown', (e) => {
    Groups dynamic events so they can be re-triggered after page routing
 */
 function initDynamicInteractions() {
-  
   const yearSpan = document.getElementById('current-year');
   if (yearSpan) {
     yearSpan.textContent = new Date().getFullYear();
@@ -91,12 +89,36 @@ function initCardTilt() {
   });
 }
 
-// Boot up interactions on initial load
-initDynamicInteractions();
 
-// Boot up the router, passing our initializer to re-run on page transitions
+// PERFORMANCE OPTIMIZATION ROUTER & TIMING CONTROL
+
+
+// Boot up the router immediately so clicks are intercepted from the first millisecond
 initRouter(initDynamicInteractions);
 
-// Initialize new interactions
-initCardTilt();
-initHeroParallax();
+// Defer non-critical, heavy rendering loops until the main thread has completed painting the initial page
+const deferHeavyVisuals = () => {
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(() => {
+      initCursor(); // Fires the 60fps cursor animation loop
+      initDynamicInteractions(); // Draws steam canvas, attaches animations
+      initCardTilt();
+      initHeroParallax();
+    });
+  } else {
+    // Fallback alignment for engines missing requestIdleCallback support
+    setTimeout(() => {
+      initCursor();
+      initDynamicInteractions();
+      initCardTilt();
+      initHeroParallax();
+    }, 200);
+  }
+};
+
+// Fire structural optimization routines depending on the current browser state
+if (document.readyState === 'complete') {
+  deferHeavyVisuals();
+} else {
+  window.addEventListener('load', deferHeavyVisuals);
+}
